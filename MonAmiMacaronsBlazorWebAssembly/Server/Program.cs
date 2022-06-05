@@ -1,8 +1,9 @@
 global using MonAmiMacaronsBlazorWebAssembly.Shared;
 global using Microsoft.EntityFrameworkCore;
+global using MonAmiMacaronsBlazorWebAssembly.Server.Data;
 
 using Microsoft.AspNetCore.ResponseCompression;
-using MonAmiMacaronsBlazorWebAssembly.Server.Data;
+using MonAmiMacaronsBlazorWebAssembly.Server.Services.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +16,11 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
