@@ -35,9 +35,15 @@
             }
 
                 );
+            modelBuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Macarons" },
+                new Category { Id = 2, Name = "Cakes" },
+                new Category { Id = 3, Name = " Choux pastry" }
+                );
 
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

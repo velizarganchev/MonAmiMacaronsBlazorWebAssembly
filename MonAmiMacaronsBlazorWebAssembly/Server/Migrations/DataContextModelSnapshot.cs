@@ -21,6 +21,40 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("MonAmiMacaronsBlazorWebAssembly.Shared.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Macarons"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Cakes"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = " Choux pastry"
+                        });
+                });
+
             modelBuilder.Entity("MonAmiMacaronsBlazorWebAssembly.Shared.Product", b =>
                 {
                     b.Property<int>("Id")

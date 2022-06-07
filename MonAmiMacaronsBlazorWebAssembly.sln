@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonAmiMacaronsBlazorWebAssembly.Server", "MonAmiMacaronsBlazorWebAssembly\Server\MonAmiMacaronsBlazorWebAssembly.Server.csproj", "{E2BB2391-8E05-494F-A7A5-D874700B4400}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonAmiMacaronsBlazorWebAssembly.Server", "MonAmiMacaronsBlazorWebAssembly\Server\MonAmiMacaronsBlazorWebAssembly.Server.csproj", "{E2BB2391-8E05-494F-A7A5-D874700B4400}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonAmiMacaronsBlazorWebAssembly.Client", "MonAmiMacaronsBlazorWebAssembly\Client\MonAmiMacaronsBlazorWebAssembly.Client.csproj", "{861E3CFD-EB61-42AC-BD7B-F0DD9A19396D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonAmiMacaronsBlazorWebAssembly.Client", "MonAmiMacaronsBlazorWebAssembly\Client\MonAmiMacaronsBlazorWebAssembly.Client.csproj", "{861E3CFD-EB61-42AC-BD7B-F0DD9A19396D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonAmiMacaronsBlazorWebAssembly.Shared", "MonAmiMacaronsBlazorWebAssembly\Shared\MonAmiMacaronsBlazorWebAssembly.Shared.csproj", "{4170F141-F3D4-42F4-AB9E-7A91BA8E8162}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonAmiMacaronsBlazorWebAssembly.Shared", "MonAmiMacaronsBlazorWebAssembly\Shared\MonAmiMacaronsBlazorWebAssembly.Shared.csproj", "{4170F141-F3D4-42F4-AB9E-7A91BA8E8162}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
