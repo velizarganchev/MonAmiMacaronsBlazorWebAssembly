@@ -1,9 +1,10 @@
 global using MonAmiMacaronsBlazorWebAssembly.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using MonAmiMacaronsBlazorWebAssembly.Server.Data;
+global using MonAmiMacaronsBlazorWebAssembly.Server.Services.Categories;
+global using MonAmiMacaronsBlazorWebAssembly.Server.Services.Products;
 
 using Microsoft.AspNetCore.ResponseCompression;
-using MonAmiMacaronsBlazorWebAssembly.Server.Services.Products;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
 
