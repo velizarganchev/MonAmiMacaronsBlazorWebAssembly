@@ -1,6 +1,6 @@
 ﻿@page "/product"
-
-@inject IProductService ProductService;
+@page "/product/{categoryUrl}"
+@inject IProductService ProductService
 
 @if (ProductService.Products == null || ProductService.Products.Count == 00)
 {
@@ -17,17 +17,7 @@ else
             {
                 <div class="card">
                     <div class="card-header animated-bg" id="header">@product.Title</div>
-                    <img src="@product.ImageUrl" alt="" />
-                    <div class="card-content">
-                        <h3 class="card-title animated-bg animated-bg-text" id="title">
-                            &nbsp;
-                        </h3>
-                        <p class="card-excerpt" id="excerpt">
-                            @*<span class="animated-bg animated-bg-text">&nbsp;</span>
-                    <span class="animated-bg animated-bg-text">&nbsp;</span>
-                    <span class="animated-bg animated-bg-text">&nbsp;</span>*@
-                        </p>
-                    </div>
+                    <a href="/product/@product.Id"><img src="@product.ImageUrl" alt="" /></a>
                 </div>
             }
         </div>
@@ -35,8 +25,11 @@ else
     <!-- Product End -->
 }
 @code {
-    protected override async Task OnInitializedAsync()
+    [Parameter]
+    public string? CategoryUrl { get; set; } = null;
+
+    protected override async Task OnParametersSetAsync()
     {
-        await ProductService.GetAllProducts();
+        await ProductService.GetAllProducts(CategoryUrl);
     }
 }

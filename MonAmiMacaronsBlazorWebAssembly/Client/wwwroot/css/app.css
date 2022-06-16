@@ -99,6 +99,10 @@ pre {
             border-bottom: 2px #ff006c solid;
         }
 
+    .navbar h1 a:hover {
+        border-bottom: none;
+    }
+
     .navbar .flex {
         justify-content: space-between;
     }
@@ -221,14 +225,19 @@ pre {
     transition: transform 0.2s ease-in;
 }
 
-    .languages .card h4 {
-        font-size: 20px;
-        margin-bottom: 10px;
-    }
+#header-category {
+    font-size: 25px;
+    font-weight: bold;
+}
 
-    .languages .card:hover {
-        transform: translateY(-15px);
-    }
+.languages .card h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.languages .card:hover {
+    transform: translateY(-15px);
+}
 
 /* Features */
 .features-head img,
@@ -278,6 +287,32 @@ pre {
 .docs-main a:hover {
     font-weight: bold;
 }
+
+/*ProductDetails*/
+.cardDetails-img-container img {
+    border-radius: 90px;
+}
+
+.cardDetails {
+    margin: 60px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+cardDetails-img-container {
+    width: 415px;
+}
+
+.cardDetails-body h5 {
+    font-size: 25px;
+}
+
+
+
 
 /* Footer */
 .footer .social a {
@@ -429,6 +464,16 @@ footer > div > nav > ul a:hover {
     height: 260px;
     background-color: #fff;
     color: #ff006c;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+}
+
+.cardShowcase {
+    width: 250px;
+    height: 210px;
+    border: 1px solid #ff006c;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;

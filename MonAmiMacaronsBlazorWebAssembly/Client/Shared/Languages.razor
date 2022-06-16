@@ -1,38 +1,31 @@
-﻿<!-- Languages -->
+﻿@inject ICategoryService CategoryService;
+
+<!-- Languages -->
 <section class="languages">
     <h2 class="md text-center my-2">
         Supported Languages
     </h2>
     <div class="container flex">
-        <div class="card">
-            <div class="card-header animated-bg" id="header">Test;</div>
-            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80" alt="" />
-            <div class="card-content">
-                <h3 class="card-title animated-bg animated-bg-text" id="title">
-                    &nbsp;Lorem ipsum dolor sit amet
-                </h3>
+        @foreach (var category in CategoryService.Categories)
+        {
+            <div class="card">
+                <div class="card-header" id="header-category">@category.Name</div>
+                <a class="card-category-img" href="product/@category.Url">
+                    <img src="img/product-1.jpg" alt="" />
+                </a>
+                <div class="card-content">
+                    <h4 class="card-title animated-bg animated-bg-text" id="title">
+                        Lorem ipsum dolor
+                    </h4>
+                </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="card-header animated-bg" id="header">Test</div>
-            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80" alt="" />
-            <div class="card-content">
-                <h3 class="card-title animated-bg animated-bg-text" id="title">
-                    &nbsp;Lorem ipsum dolor sit amet
-                </h3>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header animated-bg" id="header">Test;</div>
-            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80" alt="" />
-            <div class="card-content">
-                <h3 class="card-title animated-bg animated-bg-text" id="title">
-                    &nbsp;Lorem ipsum dolor sit amet
-                </h3>
-            </div>
-        </div>
+        }
     </div>
 </section>
 @code {
+    protected override async Task OnInitializedAsync()
+    {
+        await CategoryService.GetAllCategories();
+    }
 
 }

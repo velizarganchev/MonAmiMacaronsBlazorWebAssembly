@@ -11,9 +11,14 @@
         public List<Product> Products { get; set; } = new List<Product>();
         public Product Product { get; set; } = new Product();
 
-        public async Task GetAllProducts()
+        public event Action ProductsChanged;
+
+        public async Task GetAllProducts(string? categoryUrl = null)
         {
-            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/product");
+
+            var result = categoryUrl == null ?
+                await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>("api/product") :
+                await _httpClient.GetFromJsonAsync<ServiceResponse<List<Product>>>($"api/product/{categoryUrl}");
             if (result != null && result.Data != null)
                 Products = result.Data;
         }
