@@ -1,0 +1,42 @@
+﻿@page "/product"
+
+@inject IProductService ProductService;
+
+@if (ProductService.Products == null || ProductService.Products.Count == 00)
+{
+    <span>Loading Products...</span>
+}
+else
+{
+    <section class="languages ourProducts">
+        <h2 class="md text-center my-2">
+            Our Bakery Products
+        </h2>
+        <div class="container flex">
+            @foreach (var product in ProductService.Products)
+            {
+                <div class="card">
+                    <div class="card-header animated-bg" id="header">@product.Title</div>
+                    <img src="@product.ImageUrl" alt="" />
+                    <div class="card-content">
+                        <h3 class="card-title animated-bg animated-bg-text" id="title">
+                            &nbsp;
+                        </h3>
+                        <p class="card-excerpt" id="excerpt">
+                            @*<span class="animated-bg animated-bg-text">&nbsp;</span>
+                    <span class="animated-bg animated-bg-text">&nbsp;</span>
+                    <span class="animated-bg animated-bg-text">&nbsp;</span>*@
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+    <!-- Product End -->
+}
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ProductService.GetAllProducts();
+    }
+}
