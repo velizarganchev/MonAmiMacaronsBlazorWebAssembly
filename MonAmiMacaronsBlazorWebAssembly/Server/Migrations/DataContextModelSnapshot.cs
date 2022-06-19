@@ -81,9 +81,6 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -101,7 +98,6 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             CategoryId = 1,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
                             ImageUrl = "https://www.einfachbacken.de/sites/einfachbacken.de/files/styles/700_530/public/2020-03/macarons.jpg?h=4521fff0&itok=w8VpTt7p",
-                            Price = 19.99m,
                             Title = "Shoko Macarons"
                         },
                         new
@@ -109,8 +105,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             Id = 2,
                             CategoryId = 2,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://img.chefkoch-cdn.de/rezepte/1659951274094329/bilder/802341/crop-600x400/macarons.jpg",
-                            Price = 15.99m,
+                            ImageUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/triple-chocolate-peanut-butter-layer-cake-2-06eee24.jpg",
                             Title = " Citronen Macarons"
                         },
                         new
@@ -118,8 +113,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             Id = 3,
                             CategoryId = 3,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://www.kuechengoetter.de/uploads/media/630x630/00/80750-luftige-schoko-macarons.webp?v=2-15",
-                            Price = 16.99m,
+                            ImageUrl = "https://www.abakingjourney.com/wp-content/uploads/2019/08/Choux-a-la-Creme-Feature2-500x500.jpg",
                             Title = "Vanilie Macarons"
                         },
                         new
@@ -127,26 +121,23 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             Id = 4,
                             CategoryId = 2,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://www.einfachbacken.de/sites/einfachbacken.de/files/styles/700_530/public/2020-03/macarons.jpg?h=4521fff0&itok=w8VpTt7p",
-                            Price = 19.99m,
-                            Title = "Shoko Macarons"
+                            ImageUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/triple-chocolate-peanut-butter-layer-cake-2-06eee24.jpg",
+                            Title = "Vanilie Macarons"
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 2,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://img.chefkoch-cdn.de/rezepte/1659951274094329/bilder/802341/crop-600x400/macarons.jpg",
-                            Price = 15.99m,
-                            Title = " Citronen Macarons"
+                            ImageUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/triple-chocolate-peanut-butter-layer-cake-2-06eee24.jpg",
+                            Title = " Banane Macarons"
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 1,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://www.kuechengoetter.de/uploads/media/630x630/00/80750-luftige-schoko-macarons.webp?v=2-15",
-                            Price = 16.99m,
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Macarons%2C_French_made_mini_cakes.JPG/800px-Macarons%2C_French_made_mini_cakes.JPG",
                             Title = "Vanilie Macarons"
                         },
                         new
@@ -154,8 +145,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             Id = 7,
                             CategoryId = 3,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://www.kuechengoetter.de/uploads/media/630x630/00/80750-luftige-schoko-macarons.webp?v=2-15",
-                            Price = 16.99m,
+                            ImageUrl = "https://www.abakingjourney.com/wp-content/uploads/2019/08/Choux-a-la-Creme-Feature2-500x500.jpg",
                             Title = "Vanilie Macarons"
                         },
                         new
@@ -163,8 +153,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             Id = 8,
                             CategoryId = 2,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://www.einfachbacken.de/sites/einfachbacken.de/files/styles/700_530/public/2020-03/macarons.jpg?h=4521fff0&itok=w8VpTt7p",
-                            Price = 19.99m,
+                            ImageUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/triple-chocolate-peanut-butter-layer-cake-2-06eee24.jpg",
                             Title = "Shoko Macarons"
                         },
                         new
@@ -172,8 +161,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             Id = 9,
                             CategoryId = 2,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://img.chefkoch-cdn.de/rezepte/1659951274094329/bilder/802341/crop-600x400/macarons.jpg",
-                            Price = 15.99m,
+                            ImageUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/triple-chocolate-peanut-butter-layer-cake-2-06eee24.jpg",
                             Title = " Citronen Macarons"
                         },
                         new
@@ -181,9 +169,158 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                             Id = 10,
                             CategoryId = 1,
                             Description = "Das Macaron ist ein französisches Baisergebäck aus Mandelmehl, dessen Herkunft bis ins Mittelalter zurückreicht. In Frankreich werden viele Varianten von traditionellen Macarons gebacken, davon ist heute das bunte Macaron in Form einer kleinen Doppelscheibe mit einer Cremeschicht dazwischen am weitesten verbreitet.",
-                            ImageUrl = "https://www.kuechengoetter.de/uploads/media/630x630/00/80750-luftige-schoko-macarons.webp?v=2-15",
-                            Price = 16.99m,
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Macarons%2C_French_made_mini_cakes.JPG/800px-Macarons%2C_French_made_mini_cakes.JPG",
                             Title = "Vanilie Macarons"
+                        });
+                });
+
+            modelBuilder.Entity("MonAmiMacaronsBlazorWebAssembly.Shared.ProductType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "7 pieces"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "11 pieces"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "15 pieces"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "19 pieces"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "23 pieces"
+                        });
+                });
+
+            modelBuilder.Entity("MonAmiMacaronsBlazorWebAssembly.Shared.ProductVariant", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("OriginalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("ProductId", "ProductTypeId");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.ToTable("ProductVariants");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            ProductTypeId = 1,
+                            OriginalPrice = 19.99m,
+                            Price = 11.99m
+                        },
+                        new
+                        {
+                            ProductId = 1,
+                            ProductTypeId = 2,
+                            OriginalPrice = 17.99m,
+                            Price = 13.99m
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            ProductTypeId = 3,
+                            OriginalPrice = 18.99m,
+                            Price = 12.99m
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            ProductTypeId = 1,
+                            OriginalPrice = 10.99m,
+                            Price = 7.99m
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            ProductTypeId = 4,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
+                        },
+                        new
+                        {
+                            ProductId = 4,
+                            ProductTypeId = 5,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
+                        },
+                        new
+                        {
+                            ProductId = 5,
+                            ProductTypeId = 2,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
+                        },
+                        new
+                        {
+                            ProductId = 6,
+                            ProductTypeId = 4,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
+                        },
+                        new
+                        {
+                            ProductId = 7,
+                            ProductTypeId = 3,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
+                        },
+                        new
+                        {
+                            ProductId = 8,
+                            ProductTypeId = 5,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
+                        },
+                        new
+                        {
+                            ProductId = 9,
+                            ProductTypeId = 1,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
+                        },
+                        new
+                        {
+                            ProductId = 10,
+                            ProductTypeId = 2,
+                            OriginalPrice = 22.99m,
+                            Price = 20.99m
                         });
                 });
 
@@ -196,6 +333,30 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("MonAmiMacaronsBlazorWebAssembly.Shared.ProductVariant", b =>
+                {
+                    b.HasOne("MonAmiMacaronsBlazorWebAssembly.Shared.Product", "Product")
+                        .WithMany("Variants")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MonAmiMacaronsBlazorWebAssembly.Shared.ProductType", "ProductType")
+                        .WithMany()
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ProductType");
+                });
+
+            modelBuilder.Entity("MonAmiMacaronsBlazorWebAssembly.Shared.Product", b =>
+                {
+                    b.Navigation("Variants");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,8 +11,6 @@
         public List<Product> Products { get; set; } = new List<Product>();
         public Product Product { get; set; } = new Product();
 
-        public event Action ProductsChanged;
-
         public async Task GetAllProducts(string? categoryUrl = null)
         {
 

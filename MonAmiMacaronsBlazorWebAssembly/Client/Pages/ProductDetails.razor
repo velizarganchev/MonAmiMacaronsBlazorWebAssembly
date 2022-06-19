@@ -1,4 +1,5 @@
 ﻿@page "/product/{productId:int}"
+
 @inject IProductService ProductService
 
 @if (product == null)
@@ -14,7 +15,26 @@ else
         <div class="cardDetails-body">
             <h5 class="cardDetails-title">@product.Title</h5>
             <p class="cardDetails-text">@product.Description</p>
-            <h5 class="cardDetails-text">@product.Price</h5>
+            @if (product.Variants != null && product.Variants.Count > 1)
+            {
+                <div>
+                    <select class="cardDetails-body-variant" @bind="currentTypeId">
+                        @foreach (var variant in product.Variants)
+                        {
+                            <option value="@variant.ProductTypeId">@variant.ProductType.Name</option>
+                        }
+                    </select>
+                </div>
+            }
+            @if (GetSelectedVariant != null)
+            {
+                @if (GetSelectedVariant().OriginalPrice > GetSelectedVariant().Price)
+                {
+                    <h6 class="originalPrice">$@GetSelectedVariant().OriginalPrice</h6>
+                }
+                <h5 class="cardDetails-text" id="price">$@GetSelectedVariant().Price</h5>
+            }
+
         </div>
     </div>
 }
@@ -23,6 +43,7 @@ else
 @code {
     private Product? product = null;
     private string message = string.Empty;
+    private int currentTypeId = 1;
 
     [Parameter]
     public int productId { get; set; }
@@ -30,6 +51,7 @@ else
     protected override async Task OnParametersSetAsync()
     {
         message = "Loading product....";
+
         var result = await ProductService.GetProduct(productId);
 
         if (!result.Success)
@@ -39,6 +61,18 @@ else
         else
         {
             product = result.Data;
+
+            if (product.Variants.Count > 0)
+            {
+                currentTypeId = product.Variants[0].ProductTypeId;
+            }
         }
+    }
+
+    private ProductVariant GetSelectedVariant()
+    {
+        var variant = product.Variants.FirstOrDefault(x => x.ProductTypeId == currentTypeId);
+
+        return variant;
     }
 }

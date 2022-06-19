@@ -10,8 +10,10 @@
         }
         public async Task<ServiceResponse<List<Category>>> GetCategories()
         {
-            var response = new ServiceResponse<List<Category>>();
-            response.Data = await _context.Categories.ToListAsync();
+            var response = new ServiceResponse<List<Category>>()
+            {
+                Data = await _context.Categories.ToListAsync()
+            };
 
             return response;
         }
