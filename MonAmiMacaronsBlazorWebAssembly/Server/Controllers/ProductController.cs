@@ -32,10 +32,16 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Controllers
             return Ok(await _productService.GetProductsByCategoryAsync(categoryUrl));
         }
 
-        [HttpGet("")]
+        [HttpGet("search/{searchText}")]
         public async Task<ActionResult<ServiceResponse<Product>>> SearchProduct(string searchText)
         {
             return Ok(await _productService.SearchProducts(searchText));
+        }
+
+        [HttpGet("searchsuggestions/{searchText}")]
+        public async Task<ActionResult<ServiceResponse<Product>>> GetProductSearchSuggestions(string searchText)
+        {
+            return Ok(await _productService.GetProductSearchSuggestions(searchText));
         }
     }
 }

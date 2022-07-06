@@ -1,13 +1,18 @@
 ﻿@page "/product"
 @page "/product/{categoryUrl}"
+@page "/product/search/{searchText}"
 @inject IProductService ProductService
 
 @if (ProductService.Products == null || ProductService.Products.Count == 00)
 {
-    <span>Loading Products...</span>
+    <span>@ProductService.Message</span>
 }
 else
 {
+
+    <div>
+        <Search />
+    </div>
     <section class="languages ourProducts">
         <h2 class="md text-center my-2">
             Our Bakery Products
@@ -29,9 +34,20 @@ else
     [Parameter]
     public string? CategoryUrl { get; set; } = null;
 
+    [Parameter]
+    public string? SearchText { get; set; } = null;
+
     protected override async Task OnParametersSetAsync()
     {
-        await ProductService.GetAllProducts(CategoryUrl);
+
+        if (SearchText != null)
+        {
+            await ProductService.SearchProducts(SearchText);
+        }
+        else
+        {
+            await ProductService.GetAllProducts(CategoryUrl);
+        }
     }
 
     private string GetPriceText(Product product)
