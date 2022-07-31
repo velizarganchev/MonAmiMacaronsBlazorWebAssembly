@@ -10,8 +10,8 @@
 .card {
     width: 250px;
     height: 260px;
-    background-color: #fff;
-    color: #ff006c;
+    background-color: #ebebeb;
+    color: #FF3389;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -63,7 +63,7 @@
 
 .bg-dark,
 .btn-dark {
-    background-color: var(--dark-color);
+    background-color: var(--primary-color);
     color: #ffff;
 }
 
@@ -249,7 +249,7 @@
 }
 
 :root {
-    --primary-color: #ebebeb;
+    --primary-color: #E48494;
     --secondary-color: #1c3fa8;
     --dark-color: #8295A0;
     --light-color: #f4f4f4;
@@ -387,13 +387,13 @@ pre {
     }
 
     .navbar a {
-        color: #ff006c;
+        color: white;
         padding: 10px;
         margin: 0 5px;
     }
 
         .navbar a:hover {
-            border-bottom: 2px #ff006c solid;
+            border-bottom: 2px white solid;
         }
 
     .navbar h1 a:hover {
@@ -407,8 +407,8 @@ pre {
 /* Showcase */
 .showcase {
     height: 400px;
-    background-color: var(--primary-color);
-    color: #ff006c;
+    background-color: #ebebeb;
+    color: #FF3389;
     position: relative;
 }
 
@@ -467,7 +467,7 @@ pre {
     bottom: -70px;
     right: 0;
     left: 0;
-    background: #8295A0;
+    background: var(--primary-color);
     transform: skewY(-3deg);
     -webkit-transform: skewY(-3deg);
     -moz-transform: skewY(-3deg);
@@ -512,15 +512,19 @@ pre {
 
 /* Languages */
 
-.languages .flex {
-    flex-wrap: wrap;
+.languages {
+    background: #ebebeb;
 }
 
-.languages .card {
-    text-align: center;
-    margin: 18px 10px 40px;
-    transition: transform 0.2s ease-in;
-}
+    .languages .flex {
+        flex-wrap: wrap;
+    }
+
+    .languages .card {
+        text-align: center;
+        margin: 18px 10px 40px;
+        transition: transform 0.2s ease-in;
+    }
 
 #header-category {
     font-size: 25px;
@@ -638,10 +642,6 @@ cardDetails-img-container {
     margin: 0 10px;
 }
 
-.fa-github:hover {
-    color: #000000;
-}
-
 .fa-facebook:hover {
     color: #1773EA;
 }
@@ -650,7 +650,7 @@ cardDetails-img-container {
     color: #B32E87;
 }
 
-.fa-twitter:hover {
+.fa-envelope:hover {
     color: #1C9CEA;
 }
 
