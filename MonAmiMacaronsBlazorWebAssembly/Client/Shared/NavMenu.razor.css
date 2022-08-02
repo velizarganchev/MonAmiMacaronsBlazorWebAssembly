@@ -1,0 +1,44 @@
+﻿/* Navbar */
+.navbar {
+    background-color: var(--primary-color);
+    color: #ff006c;
+    height: 70px;
+}
+
+    .navbar ul {
+        display: flex;
+    }
+
+    .navbar a {
+        color: white;
+        padding: 10px;
+        margin: 0 5px;
+    }
+
+        .navbar a:hover {
+            border-bottom: 2px white solid;
+        }
+
+    .navbar h1 a:hover {
+        border-bottom: none;
+    }
+
+    .navbar .flex {
+        justify-content: space-between;
+    }
+
+/* Mobile */
+@media (max-width: 500px) {
+    .navbar {
+        height: 150px;
+    }
+
+        .navbar .flex {
+            flex-direction: column;
+        }
+
+        .navbar ul {
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+}
