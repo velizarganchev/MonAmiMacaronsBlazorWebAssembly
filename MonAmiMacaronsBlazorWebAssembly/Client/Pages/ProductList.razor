@@ -1,6 +1,6 @@
 ﻿@page "/product"
 @page "/product/{categoryUrl}"
-@page "/product/search/{searchText}"
+@page "/product/search/{searchText}/{page:int}"
 @inject IProductService ProductService
 
 @if (ProductService.Products == null || ProductService.Products.Count == 00)
@@ -28,6 +28,11 @@ else
             }
         </div>
     </section>
+    for (int i = 1; i <= ProductService.PageCount; i++)
+    {
+        <a class="btn @(i == ProductService.CurrentPage ? "btn-pagination" : "btn-outline-pagination" )"
+   href="/product/search/@ProductService.LastSearchText/@i">@i</a>
+    }
 }
 @code {
     [Parameter]
@@ -35,13 +40,15 @@ else
 
     [Parameter]
     public string? SearchText { get; set; } = null;
+    [Parameter]
+    public int Page { get; set; } = 1;
 
     protected override async Task OnParametersSetAsync()
     {
 
         if (SearchText != null)
         {
-            await ProductService.SearchProducts(SearchText);
+            await ProductService.SearchProducts(SearchText, Page);
         }
         else
         {
