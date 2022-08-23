@@ -9,37 +9,44 @@
 }
 else
 {
-    <div class="cardDetails">
-        <div class="cardDetails-img-container">
-            <img src="@product.ImageUrl" class="cardDetails-img-top" alt="@product.Title">
+    <div class="cardDetails-container">
+        <div class="cardDetails">
+            <div class="cardDetails-img-container">
+                <img src="@product.ImageUrl" class="cardDetails-img-top" alt="@product.Title">
+            </div>
+            <div class="cardDetails-body">
+                <h5 class="cardDetails-title">@product.Title</h5>
+                <p class="cardDetails-text">@product.Description</p>
+            </div>
         </div>
-        <div class="cardDetails-body">
-            <h5 class="cardDetails-title">@product.Title</h5>
-            <p class="cardDetails-text">@product.Description</p>
+        <div class="cardDetails-varian-price">
             @if (product.Variants != null && product.Variants.Count > 1)
             {
                 <div>
-                    <select class="cardDetails-body-variant" @bind="currentTypeId">
-                        @foreach (var variant in product.Variants)
+                    @if (GetSelectedVariant != null)
+                    {
+                        @if (GetSelectedVariant().OriginalPrice > GetSelectedVariant().Price)
                         {
-                            <option value="@variant.ProductTypeId">@variant.ProductType.Name</option>
+                            <h6 class="originalPrice">$@GetSelectedVariant().OriginalPrice</h6>
                         }
-                    </select>
+                        <h5 class="cardDetails-text" id="price">$@GetSelectedVariant().Price</h5>
+                    }
                 </div>
-            }
-            @if (GetSelectedVariant != null)
-            {
-                @if (GetSelectedVariant().OriginalPrice > GetSelectedVariant().Price)
-                {
-                    <h6 class="originalPrice">$@GetSelectedVariant().OriginalPrice</h6>
-                }
-                <h5 class="cardDetails-text" id="price">$@GetSelectedVariant().Price</h5>
-            }
+                <select class="cardDetails-body-variant" @bind="currentTypeId">
+                    @foreach (var variant in product.Variants)
+                    {
+                        <option value="@variant.ProductTypeId">@variant.ProductType.Name</option>
+                    }
+                </select>
 
-            <button class="cart-details-btn" @onclick="AddToCart">
-                <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
-            </button>
+                <button class="cart-details-btn" @onclick="AddToCart">
+                    <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
+                </button>
+            }
+            @*
+        <div class="cardDetails-varian-price-btn">
 
+        </div>*@
         </div>
     </div>
 }
