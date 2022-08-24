@@ -1,0 +1,58 @@
+﻿@page "/cart"
+@inject ICartService CartService
+
+<h3 class="cart-title">Shopping Cart</h3>
+
+@if (cartProducts == null || cartProducts.Count == 0)
+{
+    <span>@message</span>
+}
+else
+{
+    <div class="cart-products-container">
+        @foreach (var product in cartProducts)
+        {
+            <div class="cart-product">
+                <div class="cart-product-img-wrap">
+                    <img src="@product.ImageUrl" />
+                </div>
+                <div class="cart-product-content">
+                    <h5><a href="/product/@product.ProductId">@product.Title</a></h5>
+                    <span>@product.ProductType</span>
+                </div>
+                <div class="cart-product-price">
+                    $@product.Price
+                </div>
+            </div>
+        }
+
+        <div class="cart-products-totalPrice">
+            Total (@cartProducts.Count): $@cartProducts.Sum(p => p.Price)
+        </div>
+
+    </div>
+}
+
+
+
+
+@code {
+    List<CartProductResponse> cartProducts = null;
+
+    string message = "Loading cart";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        if ((await CartService.GetCartItems()).Count == 0)
+        {
+            message = "Your cart is empty.";
+            cartProducts = new List<CartProductResponse>();
+        }
+        else
+        {
+            cartProducts = await CartService.GetCartProducts();
+        }
+    }
+
+}
