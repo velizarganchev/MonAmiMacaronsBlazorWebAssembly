@@ -39,6 +39,11 @@ else
                     }
                 </select>
             }
+            else
+            {
+                <h5 class="cardDetails-text" id="price">$@GetSelectedVariant().Price</h5>
+            }
+
             <button class="cart-details-btn" @onclick="AddToCart">
                 <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
             </button>
