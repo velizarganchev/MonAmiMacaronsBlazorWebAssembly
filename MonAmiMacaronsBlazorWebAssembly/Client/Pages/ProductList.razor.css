@@ -4,6 +4,30 @@
     justify-content: space-around;
 }
 
+.languages .flex {
+    flex-wrap: wrap;
+}
+
+.languages .card {
+    text-align: center;
+    margin: 18px 10px 40px;
+    transition: transform 0.2s ease-in;
+}
+
+#header-category {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.languages .card h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.languages .card:hover {
+    transform: translateY(-15px);
+}
+
 .btn-pagination {
     margin-left: 15px;
     margin-bottom: 30px;

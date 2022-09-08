@@ -452,47 +452,6 @@ pre {
 }
 
 /*ProductDetails*/
-.cardDetails-img-container img {
-    border-radius: 90px;
-}
-
-.cardDetails {
-    margin: 60px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-}
-
-cardDetails-img-container {
-    width: 415px;
-}
-
-.cardDetails-body h5 {
-    font-size: 25px;
-}
-
-#price {
-    color: forestgreen;
-}
-
-.originalPrice {
-    text-decoration: line-through;
-}
-
-.cardDetails-body-variant {
-    color: #ff006c;
-    width: 133px;
-    margin-bottom: 15px;
-    padding: 5px;
-    border: none;
-}
-
-    .cardDetails-body-variant:focus {
-        outline: none;
-    }
 
 #header {
     font-weight: bold;
