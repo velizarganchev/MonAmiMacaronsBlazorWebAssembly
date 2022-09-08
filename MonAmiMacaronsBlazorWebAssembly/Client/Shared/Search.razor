@@ -1,27 +1,29 @@
 ﻿@inject NavigationManager NavigationManager;
 @inject IProductService ProductService;
 
-<div class="search active">
-    <input @bind-value="searchText"
-           @bind-value:event="oninput"
+
+<form class="d-flex">
+    <input class="form-control me-2" 
+           @bind-value="searchText"
+           @bind-value:event="oninput" 
            type="search"
            list="products"
            @onkeyup="HandleSearch"
-           class="search-input"
-           placeholder="Search..."
+           placeholder="Search"
+           aria-label="Search"
            @ref="searchInput"/>
-
     <datalist id="products">
         @foreach (var suggestion in suggestions)
         {
-            <option>@suggestion</option>
+                <option>@suggestion</option>
         }
     </datalist>
-
-    <button class="search-btn" @onclick="SearchProducts">
+    <button class="btn btn-search" 
+        @onclick="SearchProducts">
         <i class="fas fa-search"></i>
     </button>
-</div>
+</form>
+
 
 @code {
     private string searchText = String.Empty;

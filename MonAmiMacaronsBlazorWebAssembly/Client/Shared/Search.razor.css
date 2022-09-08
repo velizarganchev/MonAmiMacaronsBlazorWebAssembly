@@ -1,0 +1,17 @@
+﻿
+.search .search-input {
+    background-color: #ebebeb;
+    border: 0;
+    font-size: 18px;
+    padding: 15px;
+}
+
+.btn-search:focus,
+.search-input:focus {
+    outline: none;
+}
+
+
+.btn-search i {
+    color: white;
+}

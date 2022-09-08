@@ -1,4 +1,9 @@
-﻿.cart-details-btn {
+﻿.cardDetails-img-top{
+    width: 50%;
+}
+
+
+.cart-details-btn {
     margin-top: 15px;
     display: inline-block;
     padding: 10px 30px;
