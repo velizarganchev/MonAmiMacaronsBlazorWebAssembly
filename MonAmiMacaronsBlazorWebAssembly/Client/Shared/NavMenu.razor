@@ -1,8 +1,8 @@
 ﻿@inject ILocalStorageService LocalStorage
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject NavigationManager NavigationManager
+@inject ICartService CartServise
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/"><img src="/img/heading-logo.png"/></a>
@@ -47,6 +47,7 @@
     private async Task Logout()
     {
         await LocalStorage.RemoveItemAsync("authToken");
+        await CartServise.GetCartItemsCount();
         await AuthenticationStateProvider.GetAuthenticationStateAsync();
         NavigationManager.NavigateTo("/");
     }

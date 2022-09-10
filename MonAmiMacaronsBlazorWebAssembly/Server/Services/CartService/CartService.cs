@@ -25,7 +25,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.CartService
             foreach (var cartItem in cartItems)
             {
                 var product = await _context.Products
-                    .Where(x => x.Id == cartItem.ProductId)
+                    .Where(p => p.Id == cartItem.ProductId)
                     .FirstOrDefaultAsync();
 
                 if (product == null)
@@ -34,8 +34,8 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.CartService
                 }
 
                 var productVariant = await _context.ProductVariants
-                    .Where(x => x.ProductId == cartItem.ProductId
-                    && x.ProductTypeId == cartItem.ProductTypeId)
+                    .Where(pv => pv.ProductId == cartItem.ProductId
+                    && pv.ProductTypeId == cartItem.ProductTypeId)
                     .Include(x => x.ProductType)
                     .FirstOrDefaultAsync();
 
@@ -69,6 +69,13 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.CartService
             await _context.SaveChangesAsync();
 
             return await GetCartProducts(await _context.CartItems.Where(ci => ci.UserId == GetUserId()).ToListAsync());
+        }
+
+        public async Task<ServiceResponse<int>> GetCartItemsCount()
+        {
+            var count = (await _context.CartItems.Where(ci => ci.UserId == GetUserId()).ToListAsync()).Count;
+
+            return new ServiceResponse<int> { Data = count};
         }
     }
 }

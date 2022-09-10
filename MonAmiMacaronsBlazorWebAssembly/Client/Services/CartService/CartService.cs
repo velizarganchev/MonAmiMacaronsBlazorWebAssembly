@@ -1,6 +1,4 @@
 ﻿using Blazored.LocalStorage;
-using MonAmiMacaronsBlazorWebAssembly.Client.Pages;
-using MonAmiMacaronsBlazorWebAssembly.Shared;
 
 namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
 {
@@ -24,7 +22,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
 
         public async Task AddToCart(CartItem cartItem)
         {
-            if ((await _authenticationState.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated)
+            if (await IsUserAuthenticated())
             {
                 Console.WriteLine("Authenticated");
             }
@@ -54,12 +52,13 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
             }
 
             await _localStorage.SetItemAsync("cart", cart);
-
-            OnChange.Invoke();
+            await GetCartItemsCount();
         }
 
         public async Task<List<CartItem>> GetCartItems()
         {
+            await GetCartItemsCount();
+
             var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
 
             if (cart == null)
@@ -70,11 +69,32 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
             return cart;
         }
 
+        public async Task GetCartItemsCount()
+        {
+            if (await IsUserAuthenticated())
+            {
+                var result = await _httpClient.GetFromJsonAsync<ServiceResponse<int>>("api/cart/count");
+                var count = result.Data;
+
+                await _localStorage.SetItemAsync<int>("cartItemsCount", count);
+            }
+            else
+            {
+                var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+                await _localStorage.SetItemAsync<int>("cartItemsCount", cart != null ? cart.Count : 0);
+            }
+
+            OnChange.Invoke();
+        }
+
         public async Task<List<CartProductResponse>> GetCartProducts()
         {
             var cartItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
 
-            var response = await _httpClient.PostAsJsonAsync("api/Cart/products", cartItems);
+            if (cartItems == null)
+                return new List<CartProductResponse>();
+
+            var response = await _httpClient.PostAsJsonAsync("api/cart/products", cartItems);
 
             var cartProducts =
                 await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
@@ -99,8 +119,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
             {
                 cart.Remove(cartItem);
                 await _localStorage.SetItemAsync("cart", cart);
-
-                OnChange.Invoke();
+                await GetCartItemsCount();
             }
 
         }
@@ -140,6 +159,11 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
                 cartItem.Quantity = product.Quantity;
                 await _localStorage.SetItemAsync("cart", cart);
             }
+        }
+
+        private async Task<bool> IsUserAuthenticated()
+        {
+            return (await _authenticationState.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated;
         }
     }
 }
