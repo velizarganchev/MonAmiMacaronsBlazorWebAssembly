@@ -600,3 +600,8 @@ footer > div > nav > ul a:hover {
     margin-top: 20px;
     padding: 10px;
 }
+.container-register-login-form {
+    margin: 90px auto 30px auto;
+    padding: 10px;
+    max-width: 600px;
+}
