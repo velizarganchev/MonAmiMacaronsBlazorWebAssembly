@@ -1,4 +1,5 @@
 ﻿using Blazored.LocalStorage;
+using MonAmiMacaronsBlazorWebAssembly.Client.Pages;
 using MonAmiMacaronsBlazorWebAssembly.Shared;
 
 namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
@@ -7,17 +8,31 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
     {
         private readonly ILocalStorageService _localStorage;
         private readonly HttpClient _httpClient;
+        private readonly AuthenticationStateProvider _authenticationState;
 
-        public CartService(ILocalStorageService localStorage, HttpClient httpClient)
+        public CartService(
+            ILocalStorageService localStorage,
+            HttpClient httpClient,
+            AuthenticationStateProvider authenticationState)
         {
             _localStorage = localStorage;
             _httpClient = httpClient;
+            _authenticationState = authenticationState;
         }
 
         public event Action OnChange;
 
         public async Task AddToCart(CartItem cartItem)
         {
+            if ((await _authenticationState.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated)
+            {
+                Console.WriteLine("Authenticated");
+            }
+            else
+            {
+                Console.WriteLine("Not Authenticated");
+            }
+
             var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
 
             if (cart == null)
@@ -89,6 +104,24 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
             }
 
         }
+
+        public async Task StoreCartItems(bool emptyLocalCart = false)
+        {
+            var localCart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+
+            if (localCart == null)
+            {
+                return;
+            }
+
+            await _httpClient.PostAsJsonAsync("api/cart", localCart);
+
+            if (emptyLocalCart)
+            {
+                await _localStorage.RemoveItemAsync("cart");
+            }
+        }
+
         public async Task UpdateQuantity(CartProductResponse product)
         {
             var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
