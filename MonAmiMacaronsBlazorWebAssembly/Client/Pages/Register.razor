@@ -1,4 +1,6 @@
 ﻿@page "/register"
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Registration</PageTitle>
 <div class="container-register-login-form">
@@ -10,28 +12,43 @@
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <InputText type="email" class="form-control" id="email" aria-describedby="emailHelp" @bind-Value="user.Email"/>
-        <ValidationMessage For="@(() => user.Email)"/>
+        <ValidationMessage For="@(() => user.Email)" class="text-danger"/>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <InputText type="password" class="form-control" id="password" aria-describedby="passwordHelpBlock" @bind-Value="user.Password"/>
-        <ValidationMessage For="@(() => user.Password)"/>
+        <ValidationMessage For="@(() => user.Password)" class="text-danger"/>
       </div>
       <div class="mb-3">
         <label for="confirmPassword" class="form-label">Confirm Password</label>
         <InputText type="password" class="form-control" id="confirmPassword"  @bind-Value="user.ConfirmPassword"/>
-        <ValidationMessage For="@(() => user.ConfirmPassword)"/>
+        <ValidationMessage For="@(() => user.ConfirmPassword)" class="text-danger"/>
       </div>
       <button type="submit" class="btn">Register</button>
+      <div class="@messageCssClass">
+          <span>@message</span>
+      </div>
     </EditForm>
 </div>
 
 @code {
-    UserRegister user = new UserRegister();
+    private UserRegister user = new UserRegister();
+    private string message = string.Empty;
+    private string messageCssClass = string.Empty;
 
-
-    void HandleRegistration()
+    async Task HandleRegistration()
     {
-        Console.WriteLine($"Register User with the email {user.Email} and password {user.Password}.");
+        var result = await AuthService.Register(user);
+
+        message = result.Message;
+
+        if (!result.Success)
+        {
+            messageCssClass = "text-danger";
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/login");
+        }
     }
 }

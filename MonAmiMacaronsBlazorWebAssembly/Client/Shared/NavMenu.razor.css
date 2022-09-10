@@ -21,3 +21,13 @@
     .dropdown-item:hover {
         background: var(--primary-color);
     }
+
+.navbar-collapse {
+    background: var(--primary-color);
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-nav{
+    width: 100px;
+}

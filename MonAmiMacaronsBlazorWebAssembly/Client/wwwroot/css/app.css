@@ -336,10 +336,6 @@ pre {
     margin-top: 50px;
 }
 
-/* Search */
-
-
-
 /* Stats */
 .stats {
     padding-top: 100px;
@@ -466,9 +462,9 @@ pre {
     height: 110px;
 }
 
-.footer .social a {
-    margin: 0 10px;
-}
+    .footer .social a {
+        margin: 0 10px;
+    }
 
 .fa-facebook:hover {
     color: #1773EA;
@@ -597,4 +593,10 @@ footer > div > nav > ul a:hover {
     .showcase-form {
         width: 300px;
     }
+}
+
+.not-allowed-page {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
 }

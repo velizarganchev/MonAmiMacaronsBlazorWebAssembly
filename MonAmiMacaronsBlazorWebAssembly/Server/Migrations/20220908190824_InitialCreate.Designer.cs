@@ -12,7 +12,7 @@ using MonAmiMacaronsBlazorWebAssembly.Server.Data;
 namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220908175846_InitialCreate")]
+    [Migration("20220908190824_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
