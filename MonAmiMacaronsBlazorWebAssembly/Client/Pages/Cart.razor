@@ -21,7 +21,7 @@ else
                value="@product.Quantity"
                @onchange="@((ChangeEventArgs e) => UpdateQuantity(e, product))"
                class="input-quantity"
-               min="1"/>
+               min="1" />
 
                 <div class="cart-product-content">
                     <h5><a href="/product/@product.ProductId">@product.Title</a></h5>
@@ -66,14 +66,12 @@ else
 
     private async Task LoadCart()
     {
-        if ((await CartService.GetCartItems()).Count == 0)
+        await CartService.GetCartItemsCount();
+        cartProducts = await CartService.GetCartProducts();
+
+        if (cartProducts == null || cartProducts.Count == 0)
         {
             message = "Your cart is empty.";
-            cartProducts = new List<CartProductResponse>();
-        }
-        else
-        {
-            cartProducts = await CartService.GetCartProducts();
         }
     }
 

@@ -37,5 +37,12 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Controllers
         {
             return await _cartService.GetCartItemsCount();
         }
+
+        [HttpGet]
+
+        public async Task<ActionResult<ServiceResponse<List<CartProductResponse>>>> GetDbCartProducts()
+        {
+            return await _cartService.GetDbCartProducts();
+        }
     }
 }

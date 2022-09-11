@@ -1,4 +1,7 @@
 ﻿using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Net.Http.Json;
+using static System.Net.WebRequestMethods;
 
 namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
 {
@@ -55,20 +58,6 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
             await GetCartItemsCount();
         }
 
-        public async Task<List<CartItem>> GetCartItems()
-        {
-            await GetCartItemsCount();
-
-            var cart = await _localStorage.GetItemAsync<List<CartItem>>("cart");
-
-            if (cart == null)
-            {
-                cart = new List<CartItem>();
-            }
-
-            return cart;
-        }
-
         public async Task GetCartItemsCount()
         {
             if (await IsUserAuthenticated())
@@ -89,17 +78,21 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService
 
         public async Task<List<CartProductResponse>> GetCartProducts()
         {
-            var cartItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
-
-            if (cartItems == null)
-                return new List<CartProductResponse>();
-
-            var response = await _httpClient.PostAsJsonAsync("api/cart/products", cartItems);
-
-            var cartProducts =
-                await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
-
-            return cartProducts.Data;
+            if (await IsUserAuthenticated())
+            {
+                var response = await _httpClient.GetFromJsonAsync<ServiceResponse<List<CartProductResponse>>>("api/cart");
+                return response.Data;
+            }
+            else
+            {
+                var cartItems = await _localStorage.GetItemAsync<List<CartItem>>("cart");
+                if (cartItems == null)
+                    return new List<CartProductResponse>();
+                var response = await _httpClient.PostAsJsonAsync("api/cart/products", cartItems);
+                var cartProducts =
+                    await response.Content.ReadFromJsonAsync<ServiceResponse<List<CartProductResponse>>>();
+                return cartProducts.Data;
+            }
         }
 
         public async Task RemoveProductFromCart(int productId, int productTypeId)
