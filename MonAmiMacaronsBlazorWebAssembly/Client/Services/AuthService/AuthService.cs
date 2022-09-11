@@ -1,12 +1,22 @@
-﻿namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.AuthService
+﻿using Microsoft.AspNetCore.Components.Authorization;
+
+namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.AuthService
 {
     public class AuthService : IAuthService
     {
         private readonly HttpClient _http;
+        private readonly AuthenticationStateProvider _authenticationState;
 
-        public AuthService(HttpClient http)
+        public AuthService(HttpClient http,
+            AuthenticationStateProvider authenticationState)
         {
             _http = http;
+            _authenticationState = authenticationState;
+        }
+
+        public async Task<bool> IsUserAuthenticated()
+        {
+            return (await _authenticationState.GetAuthenticationStateAsync()).User.Identity.IsAuthenticated;
         }
 
         public async Task<ServiceResponse<bool>> ChangePassword(UserChangePassword request)
@@ -15,6 +25,7 @@
 
             return await result.Content.ReadFromJsonAsync<ServiceResponse<bool>>();
         }
+
 
         public async Task<ServiceResponse<string>> Login(UserLogin request)
         {
