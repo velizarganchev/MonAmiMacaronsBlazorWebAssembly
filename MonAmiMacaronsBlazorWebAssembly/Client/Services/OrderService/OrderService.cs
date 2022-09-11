@@ -24,6 +24,13 @@ namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.OrderService
             return result.Data;
         }
 
+        public async Task<OrderDetailsResponse> GetOrderDetails(int orderId)
+        {
+            var result = await _httpClient.GetFromJsonAsync<ServiceResponse<OrderDetailsResponse>>($"api/order/{orderId}");
+
+            return result.Data;
+        }
+
         public async Task PlaceOrder()
         {
             if (await _authService.IsUserAuthenticated())

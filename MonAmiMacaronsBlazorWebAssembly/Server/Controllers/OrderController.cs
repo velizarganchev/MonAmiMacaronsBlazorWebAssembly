@@ -28,5 +28,11 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Controllers
             return Ok(result);
         }
 
+        [HttpGet("{orderId}")]
+        public async Task<ActionResult<ServiceResponse<OrderDetailsResponse>>> GetOrdersDetails(int orderId)
+        {
+            var result = await _orderService.GetOrderDetails(orderId);
+            return Ok(result);
+        }
     }
 }
