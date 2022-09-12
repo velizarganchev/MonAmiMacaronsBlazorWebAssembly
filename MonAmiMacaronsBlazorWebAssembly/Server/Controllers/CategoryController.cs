@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MonAmiMacaronsBlazorWebAssembly.Server.Controllers
 {
@@ -14,9 +15,33 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ServiceResponse<List<Category>>>> GetCategorys()
+        public async Task<ActionResult<ServiceResponse<List<Category>>>> GetCategories()
         {
             return Ok(await _categoryService.GetCategories());
+        }
+
+        [HttpGet("admin"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ServiceResponse<List<Category>>>> GetAdminCategories()
+        {
+            return Ok(await _categoryService.GetAdminCategories());
+        }
+
+        [HttpDelete("admin"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ServiceResponse<List<Category>>>> DeleteCategory(int id)
+        {
+            return Ok(await _categoryService.DeleteCategoy(id));
+        }
+
+        [HttpPost("admin"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ServiceResponse<List<Category>>>> AddCategory(Category category)
+        {
+            return Ok(await _categoryService.AddCategory(category));
+        }
+
+        [HttpPut("admin"), Authorize(Roles = "Admin")]
+        public async Task<ActionResult<ServiceResponse<List<Category>>>> UpdateCategory(Category category)
+        {
+            return Ok(await _categoryService.UpdateCategory(category));
         }
     }
 }
