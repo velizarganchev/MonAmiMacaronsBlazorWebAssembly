@@ -1,4 +1,6 @@
-﻿namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.OrderService
+﻿using MonAmiMacaronsBlazorWebAssembly.Shared;
+
+namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.OrderService
 {
     public class OrderService : IOrderService
     {
@@ -87,15 +89,13 @@
             return response;
         }
 
-        public async Task<ServiceResponse<bool>> PlaceOrder()
+        public async Task<ServiceResponse<bool>> PlaceOrder(int userId)
         {
-            var products = (await _cartService.GetDbCartProducts()).Data;
+            var products = (await _cartService.GetDbCartProducts(userId)).Data;
             decimal totalPrice = 0;
-
             products.ForEach(product => totalPrice += product.Price * product.Quantity);
 
             var orderItems = new List<OrderItem>();
-
             products.ForEach(product => orderItems.Add(new OrderItem
             {
                 ProductId = product.ProductId,
@@ -106,8 +106,8 @@
 
             var order = new Order
             {
-                UserId = _authService.GetUserId(),
-                OrderDate = DateTime.UtcNow,
+                UserId = userId,
+                OrderDate = DateTime.Now,
                 TotalPrice = totalPrice,
                 Orders = orderItems
             };
@@ -115,7 +115,7 @@
             _context.Orders.Add(order);
 
             _context.CartItems.RemoveRange(_context.CartItems
-                .Where(ci => ci.UserId == _authService.GetUserId()));
+                .Where(ci => ci.UserId == userId));
 
             await _context.SaveChangesAsync();
 

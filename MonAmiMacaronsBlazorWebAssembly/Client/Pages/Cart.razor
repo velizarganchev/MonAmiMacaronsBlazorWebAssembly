@@ -1,55 +1,59 @@
 ﻿@page "/cart"
 @inject ICartService CartService
 @inject IOrderService OrderService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
 
 <h3 class="cart-title">Shopping Cart</h3>
 
 @if (cartProducts == null || cartProducts.Count == 0)
 {
-        <span>@message</span>
-}
-else if (orderPlaced)
-{
-    <span>Thank you for your order! You can check your orders <a href="orders">here</a></span>
+            <span>@message</span>
 }
 else
 {
-        <div class="cart-products-container">
+            <div class="cart-products-container">
         @foreach (var product in cartProducts)
         {
-                    <div class="cart-product">
-                        <div class="cart-product-img-wrap">
-                            <img src="@product.ImageUrl" />
-                        </div>
+                            <div class="cart-product">
+                                <div class="cart-product-img-wrap">
+                                    <img src="@product.ImageUrl" />
+                                </div>
 
-                        <input type="number"
+                                <input type="number"
                value="@product.Quantity"
                @onchange="@((ChangeEventArgs e) => UpdateQuantity(e, product))"
                class="input-quantity"
                min="1" />
 
-                        <div class="cart-product-content">
-                            <h5><a href="/product/@product.ProductId">@product.Title</a></h5>
-                            <span>@product.ProductType</span>
-                            <div>
-                                <button class="btn-delete"
+                                <div class="cart-product-content">
+                                    <h5><a href="/product/@product.ProductId">@product.Title</a></h5>
+                                    <span>@product.ProductType</span>
+                                    <div>
+                                        <button class="btn-delete"
                         @onclick="(() => RemoveProductFromCart(product.ProductId, product.ProductTypeId))">
-                                    Delete
-                                </button>
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="cart-product-price">
+                                    $@(product.Price * product.Quantity)
+                                </div>
                             </div>
-                        </div>
-                        <div class="cart-product-price">
-                            $@(product.Price * product.Quantity)
-                        </div>
-                    </div>
         }
 
-            <div class="cart-products-totalPrice">
-                Total (@cartProducts.Count): $@cartProducts.Sum(p => p.Price * p.Quantity)
+                <div class="cart-products-totalPrice">
+                    Total (@cartProducts.Count): $@cartProducts.Sum(p => p.Price * p.Quantity)
+                </div>
             </div>
-        </div>
-
-        <button @onclick="PlaceOrder" class="btn alert-success float-end mt-1">Place Order</button>
+    @if (isAuthenticated)
+    {
+                <div>
+                    <h5>Delivery Address</h5>
+                    <AddressForm/>
+                </div>
+    }
+            <button @onclick="Checkout" class="btn alert-success float-end mt-1">Checkout</button>
 }
 
 
@@ -57,11 +61,11 @@ else
     List<CartProductResponse> cartProducts = null;
 
     string message = "Loading cart";
-    bool orderPlaced = false;
+    bool isAuthenticated = false;
 
     protected override async Task OnInitializedAsync()
     {
-        orderPlaced = false;
+        isAuthenticated = await AuthService.IsUserAuthenticated();
         await LoadCart();
 
     }
@@ -95,10 +99,9 @@ else
         await CartService.UpdateQuantity(product);
     }
 
-    private async Task PlaceOrder()
+    private async Task Checkout()
     {
-        await OrderService.PlaceOrder();
-        await CartService.GetCartItemsCount();
-        orderPlaced = true;
+        string url = await OrderService.Checkout();
+        NavigationManager.NavigateTo(url);
     }
 }

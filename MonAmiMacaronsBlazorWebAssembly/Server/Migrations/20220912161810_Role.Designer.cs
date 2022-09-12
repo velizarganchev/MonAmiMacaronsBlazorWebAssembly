@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MonAmiMacaronsBlazorWebAssembly.Server.Data;
 
@@ -11,9 +12,10 @@ using MonAmiMacaronsBlazorWebAssembly.Server.Data;
 namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220912161810_Role")]
+    partial class Role
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,9 +98,6 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("Deleted")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -106,9 +105,6 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Visible")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -118,26 +114,20 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Migrations
                         new
                         {
                             Id = 1,
-                            Deleted = false,
                             Name = "Macarons",
-                            Url = "macarons",
-                            Visible = true
+                            Url = "macarons"
                         },
                         new
                         {
                             Id = 2,
-                            Deleted = false,
                             Name = "Cakes",
-                            Url = "cakes",
-                            Visible = true
+                            Url = "cakes"
                         },
                         new
                         {
                             Id = 3,
-                            Deleted = false,
                             Name = " Choux pastry",
-                            Url = "choux-pastry",
-                            Visible = true
+                            Url = "choux-pastry"
                         });
                 });
 

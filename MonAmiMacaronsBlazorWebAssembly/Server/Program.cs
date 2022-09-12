@@ -6,6 +6,8 @@ global using MonAmiMacaronsBlazorWebAssembly.Server.Services.Products;
 global using MonAmiMacaronsBlazorWebAssembly.Server.Services.CartService;
 global using MonAmiMacaronsBlazorWebAssembly.Server.Services.AuthService;
 global using MonAmiMacaronsBlazorWebAssembly.Server.Services.OrderService;
+global using MonAmiMacaronsBlazorWebAssembly.Server.Services.PaymentService;
+global using MonAmiMacaronsBlazorWebAssembly.Server.Services.AddressService;
 
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -31,6 +33,8 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

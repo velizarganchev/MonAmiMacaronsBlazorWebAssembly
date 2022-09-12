@@ -5,6 +5,8 @@ global using MonAmiMacaronsBlazorWebAssembly.Client.Services.Categories;
 global using MonAmiMacaronsBlazorWebAssembly.Client.Services.CartService;
 global using MonAmiMacaronsBlazorWebAssembly.Client.Services.OrderService;
 global using MonAmiMacaronsBlazorWebAssembly.Client.Services.AuthService;
+global using MonAmiMacaronsBlazorWebAssembly.Client.Services.AddressService;
+
 global using Microsoft.AspNetCore.Components.Authorization;
 
 using Microsoft.AspNetCore.Components.Web;
@@ -23,6 +25,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
 
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
