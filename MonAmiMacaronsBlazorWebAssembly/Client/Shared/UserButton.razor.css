@@ -1,20 +1,28 @@
 ﻿
-.btn:hover {
-    background-color: white;
-    color: var(--primary-color);
+.nav-link {
+    color: white;
 }
 
-.show-menu {
-    display: block;
+.dropdown-menu {
+    background: var(--primary-color);
 }
 
-.user-button {
+.dropdown-item {
+    color: white;
 }
 
-top-row a {
-    margin-left: 0;
+    .dropdown-item:hover {
+        background: var(--primary-color);
+    }
+
+.navbar-collapse {
+    background: var(--primary-color);
 }
 
-.dropdown-item:hover {
-    background-color: var(--primary-color);
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-nav {
+    width: 100px;
 }

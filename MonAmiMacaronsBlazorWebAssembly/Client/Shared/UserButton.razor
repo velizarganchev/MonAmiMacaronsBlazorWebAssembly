@@ -1,29 +1,35 @@
-﻿
-<div class="dropdown">
-    <button @onclick="ToggleUserMenu"
-            @onfocusout="HideUserMenu"
-            class="btn dropdown-toggle user-button">
-        <i class="fas fa-user"></i>
-    </button>
-    <div class="dropdown-menu dropdown-menu @UserMenuCssClass">
-       <a href="register" class="dropdown-item">Register</a>
-    </div>
-</div>
+﻿@inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject NavigationManager NavigationManager
+@inject ICartService CartService
+
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <AuthorizeView>
+                  <Authorized>                    
+                      <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                      <li><a class="dropdown-item" href="/orders">Orders</a></li>
+                      <li><AdminMenu/></li>
+                      <li><button class="dropdown-item" @onclick="Logout">Logout</button></li>
+                  </Authorized>
+                  <NotAuthorized>
+                      <li><a class="dropdown-item" href="/register">Register</a></li>
+                      <li><a class="dropdown-item" href="/login?returnUrl=@NavigationManager.ToBaseRelativePath(NavigationManager.Uri)">Login</a></li>
+                  </NotAuthorized>
+              </AuthorizeView>
+                      @*<li><hr class="dropdown-divider"></li>*@
+          </ul>
 
 @code {
-    private bool showUserMenu = false;
 
-    private string UserMenuCssClass => showUserMenu ? "show-menu" : null;
-
-    private void ToggleUserMenu()
+    private async Task Logout()
     {
-        showUserMenu = !showUserMenu;
-    }
-
-    private async Task HideUserMenu()
-    {
-        await Task.Delay(200);
-        showUserMenu = false;
+        await LocalStorage.RemoveItemAsync("authToken");
+        await CartService.GetCartItemsCount();
+        await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        NavigationManager.NavigateTo("/");
     }
 
 }

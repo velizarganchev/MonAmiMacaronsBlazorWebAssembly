@@ -5,63 +5,63 @@
 
 <h3>Categories</h3>
 
-<div class="header">
+<div class="header-category">
     <div class="col">Name</div>
     <div class="col">Url</div>
     <div class="col">Visible</div>
     <div class="col"></div>
 </div>
 
-@*@foreach (var category in CategoryService.AdminCategories)
+@foreach (var category in CategoryService.AdminCategories)
 {
     @if (category.Editing)
     {
-                <EditForm Model="editingCategory" OnSubmit="UpdateCategory">
-                    <div class="row">
-                        <div class="col">
-                            <InputText @bind-Value="editingCategory.Name" class="form-control"></InputText>
-                        </div>
-                        <div class="col">
-                            <InputText @bind-Value="editingCategory.Url" class="form-control"></InputText>
-                        </div>
-                        <div class="col col-visible">
-                            <InputCheckbox @bind-Value="editingCategory.Visible" style="transform: scale(1.5,1.5);"></InputCheckbox>
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="oi oi-cloud-upload"></i>
-                            </button>
-                            <button class="btn btn-primary" @onclick="CancelEditing">
-                                <i class="oi oi-circle-x"></i>
-                            </button>
-                        </div>
-                    </div>
-                </EditForm>
+         <EditForm Model="editingCategory" OnSubmit="UpdateCategory">
+             <div class="row">
+                 <div class="col">
+                     <InputText @bind-Value="editingCategory.Name" class="form-control"></InputText>
+                 </div>
+                 <div class="col">
+                     <InputText @bind-Value="editingCategory.Url" class="form-control"></InputText>
+                 </div>
+                 <div class="col col-visible">
+                     <InputCheckbox @bind-Value="editingCategory.Visible" style="transform: scale(1.5,1.5);"></InputCheckbox>
+                 </div>
+                 <div class="col">
+                     <button type="submit" class="btn">
+                         <i class="fas fa-cloud-upload-alt"></i>
+                     </button>
+                     <button class="btn" @onclick="CancelEditing">
+                         <i class="fas fa-times-circle"></i>
+                     </button>
+                 </div>
+             </div>
+         </EditForm>
     }
     else
     {
-                <div class="row">
-                    <div class="col">
-                @category.Name
-                    </div>
-                    <div class="col">
-                @category.Url
-                    </div>
-                    <div class="col col-visible">
-                        <span>@(category.Visible ? "✔️" : "")</span>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-primary" @onclick="(() => EditCategory(category))">
-                            <i class="oi oi-pencil"></i>
-                        </button>
-                        <button class="btn btn-primary" @onclick="(() => DeleteCategory(category.Id))">
-                            <i class="oi oi-trash"></i>
-                        </button>
-                    </div>
-                </div>
-    }*@
+         <div class="row">
+             <div class="col">
+         @category.Name
+             </div>
+             <div class="col">
+         @category.Url
+             </div>
+             <div class="col col-visible">
+                 <span>@(category.Visible ? "✔️" : "")</span>
+             </div>
+             <div class="col">
+                 <button class="btn" @onclick="(() => EditCategory(category))">
+                    <i class="fas fa-pen"></i>
+                 </button>
+                 <button class="btn" @onclick="(() => DeleteCategory(category.Id))">
+                     <i class="fas fa-trash"></i>
+                 </button>
+             </div>
+         </div>
+    }
 }
-<button class="btn btn-primary" @onclick="CreateNewCategory">
+<button class="btn" @onclick="CreateNewCategory">
     <i class="oi oi-plus"></i> Add new category
 </button>
 
@@ -70,18 +70,18 @@
 
     protected override async Task OnInitializedAsync()
     {
-        //await CategoryService.GetAdminCategories();
-        //CategoryService.OnChange += StateHasChanged;
+        await CategoryService.GetAdminCategories();
+        CategoryService.OnChange += StateHasChanged;
     }
 
     public void Dispose()
     {
-        //CategoryService.OnChange -= StateHasChanged;
+        CategoryService.OnChange -= StateHasChanged;
     }
 
     private void CreateNewCategory()
     {
-        //editingCategory = CategoryService.CreateNewCategory();
+        editingCategory = CategoryService.CreateNewCategory();
     }
 
     private void EditCategory(Category category)
@@ -92,21 +92,21 @@
 
     private async Task UpdateCategory()
     {
-        if (editingCategory.IsNew){}
-            //await CategoryService.AddCategory(editingCategory);
+        if (editingCategory.IsNew)
+            await CategoryService.AddCategory(editingCategory);
         else
-            //await CategoryService.UpdateCategory(editingCategory);
+            await CategoryService.UpdateCategory(editingCategory);
         editingCategory = new Category();
     }
 
     private async Task CancelEditing()
     {
         editingCategory = new Category();
-        //await CategoryService.GetAdminCategories();
+        await CategoryService.GetAdminCategories();
     }
 
     private async Task DeleteCategory(int id)
     {
-        //await CategoryService.DeleteCategory(id);
+        await CategoryService.DeleteCategory(id);
     }
 }

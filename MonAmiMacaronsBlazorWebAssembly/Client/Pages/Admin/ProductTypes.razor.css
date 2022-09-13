@@ -1,0 +1,13 @@
+﻿﻿
+.btn:hover {
+    transform: none;
+    color: cadetblue;
+}
+.row {
+    display: flex;
+    padding: 6px;
+}
+
+.col {
+    flex: 1;
+}

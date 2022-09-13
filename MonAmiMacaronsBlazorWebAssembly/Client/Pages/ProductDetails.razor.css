@@ -72,3 +72,11 @@ cardDetails-img-container {
     justify-content: space-evenly;
     align-content: center;
 }
+.btn-edit{
+    padding: 5px 40px;
+    background-color: orange;
+}
+.btn-delete {
+    padding:5px 8px;
+    background-color: red;
+}

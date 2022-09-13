@@ -19,7 +19,7 @@ else
                 <div class="card">
                     <div class="card-header product-list" id="header">@product.Title</div>
                     <a href="/product/@product.Id"><img src="@product.ImageUrl" alt="" /></a>
-                    <h5 id="price">@GetPriceText(product)</h5>
+                    <a href="/product/@product.Id"><h5 id="price">@GetPriceText(product)</h5></a>
                 </div>
             }
         </div>

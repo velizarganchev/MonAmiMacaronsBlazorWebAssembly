@@ -1,0 +1,14 @@
+﻿﻿img {
+    max-height: 100px;
+    max-width: 100px;
+}
+.btn:hover {
+    transform: none;
+    color: cadetblue;
+}
+.table {
+    width: 100%;
+    margin-bottom: 5rem;
+    color: var(--primary-color);
+    border-color: #dee2e6;
+}

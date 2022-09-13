@@ -1,4 +1,6 @@
-﻿namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.Products
+﻿using static System.Net.WebRequestMethods;
+
+namespace MonAmiMacaronsBlazorWebAssembly.Client.Services.Products
 {
     public class ProductService : IProductService
     {
@@ -14,8 +16,33 @@
         public int PageCount { get; set; } = 0;
 
         public string LastSearchText { get; set; } = string.Empty;
+        public List<Product> AdminProducts { get ; set ; }
 
         public event Action ProductsChanged;
+
+        public async Task<Product> CreateProduct(Product product)
+        {
+            var result = await _httpClient.PostAsJsonAsync("api/product", product);
+            var newProduct = (await result.Content
+                .ReadFromJsonAsync<ServiceResponse<Product>>()).Data;
+            return newProduct;
+        }
+
+        public async Task DeleteProduct(Product product)
+        {
+            var result = await _httpClient.DeleteAsync($"api/product/{product.Id}");
+        }
+
+        public async Task GetAdminProducts()
+        {
+            var result = await _httpClient
+                .GetFromJsonAsync<ServiceResponse<List<Product>>>("api/product/admin");
+            AdminProducts = result.Data;
+            CurrentPage = 1;
+            PageCount = 0;
+            if (AdminProducts.Count == 0)
+                Message = "No products found.";
+        }
 
         public async Task GetAllProducts(string? categoryUrl = null)
         {
@@ -69,6 +96,13 @@
             }
 
             ProductsChanged?.Invoke();
+        }
+
+        public async Task<Product> UpdateProduct(Product product)
+        {
+            var result = await _httpClient.PutAsJsonAsync($"api/product", product);
+            var content = await result.Content.ReadFromJsonAsync<ServiceResponse<Product>>();
+            return content.Data;
         }
     }
 }

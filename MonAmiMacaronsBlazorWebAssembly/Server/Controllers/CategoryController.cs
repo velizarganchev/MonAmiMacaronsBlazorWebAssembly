@@ -26,7 +26,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Controllers
             return Ok(await _categoryService.GetAdminCategories());
         }
 
-        [HttpDelete("admin"), Authorize(Roles = "Admin")]
+        [HttpDelete("admin/{id}"), Authorize(Roles = "Admin")]
         public async Task<ActionResult<ServiceResponse<List<Category>>>> DeleteCategory(int id)
         {
             return Ok(await _categoryService.DeleteCategoy(id));
