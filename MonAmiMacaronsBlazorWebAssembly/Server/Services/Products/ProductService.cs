@@ -51,6 +51,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
                 .Where(p => !p.Deleted)
                 .Include(p => p.Variants.Where(v => !v.Deleted))
                 .ThenInclude(v => v.ProductType)
+                .Include(p => p.Images)
                 .ToListAsync();
 
             return response;
@@ -63,6 +64,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
             response.Data = await _context.Products
             .Where(p => p.Visible && !p.Deleted)
             .Include(p => p.Variants.Where(v => v.Visible && !v.Deleted))
+            .Include(p => p.Images)
             .ToListAsync();
 
             return response;
@@ -76,15 +78,17 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
             if (_httpContextAccessor.HttpContext.User.IsInRole("Admin"))
             {
                 product = await _context.Products
-                .Include(x => x.Variants.Where(v => !v.Deleted))
-                .ThenInclude(x => x.ProductType)
+                .Include(p => p.Variants.Where(v => !v.Deleted))
+                .ThenInclude(v => v.ProductType)
+                .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == productId && !p.Deleted);
             }
             else
             {
                 product = await _context.Products
-                .Include(x => x.Variants.Where(v => v.Visible && !v.Deleted))
-                .ThenInclude(x => x.ProductType)
+                .Include(p => p.Variants.Where(v => v.Visible && !v.Deleted))
+                .ThenInclude(v => v.ProductType)
+                .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == productId && p.Visible && !p.Deleted);
             }
 
@@ -107,6 +111,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
                 Data = await _context.Products
                 .Where(p => p.Category.Url.ToLower().Equals(categoryUrl.ToLower()) && p.Visible && !p.Deleted)
                 .Include(x => x.Variants.Where(v => v.Visible && !v.Deleted))
+                .Include(p => p.Images)
                 .ToListAsync()
             };
 
@@ -161,6 +166,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
                             p.Description.ToLower().Contains(searchText.ToLower())
                             && p.Visible && !p.Deleted)
                             .Include(x => x.Variants.Where(v => v.Visible && !v.Deleted))
+                            .Include(p => p.Images)
                             .Skip((page - 1) * (int)pageResult)
                             .Take((int)pageResult)
                             .ToListAsync();
@@ -181,7 +187,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
         public async Task<ServiceResponse<Product>> UpdateProduct(Product product)
         {
             var dbProduct = await _context.Products
-                //.Include(p => p.Images)
+                .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == product.Id);
 
             if (dbProduct == null)
@@ -199,10 +205,10 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
             dbProduct.CategoryId = product.CategoryId;
             dbProduct.Visible = product.Visible;
 
-            //var productImages = dbProduct.Images;
-            //_context.Images.RemoveRange(productImages);
+            var productImages = dbProduct.Images;
+            _context.Images.RemoveRange(productImages);
 
-            //dbProduct.Images = product.Images;
+            dbProduct.Images = product.Images;
 
             foreach (var variant in product.Variants)
             {
@@ -236,6 +242,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.Products
                             p.Description.ToLower().Contains(searchText.ToLower())
                             && p.Visible && !p.Deleted)
                             .Include(x => x.Variants.Where(v => v.Visible && !v.Deleted))
+                            .Include(p => p.Images)
                             .ToListAsync();
         }
     }

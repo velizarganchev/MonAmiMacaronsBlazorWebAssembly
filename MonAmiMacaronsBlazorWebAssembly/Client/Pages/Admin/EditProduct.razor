@@ -219,7 +219,7 @@ else
         var format = "image/png";
         foreach (var image in e.GetMultipleFiles(int.MaxValue))
         {
-            var resizedImage = await image.RequestImageFileAsync(format, 200, 200);
+            var resizedImage = await image.RequestImageFileAsync(format, 350, 350);
             var buffer = new byte[resizedImage.Size];
             await resizedImage.OpenReadStream().ReadAsync(buffer);
             var imageData = $"data:{format};base64,{Convert.ToBase64String(buffer)}";

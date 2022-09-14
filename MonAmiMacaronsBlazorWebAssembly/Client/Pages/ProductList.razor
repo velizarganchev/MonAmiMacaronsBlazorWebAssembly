@@ -18,7 +18,16 @@ else
             {
                 <div class="card">
                     <div class="card-header product-list" id="header">@product.Title</div>
-                    <a href="/product/@product.Id"><img src="@product.ImageUrl" alt="" /></a>
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                      <a href="/product/@product.Id"><img src="@product.ImageUrl" alt="" /></a>
+
+                    }
+                    else
+                    {
+                      <a href="/product/@product.Id"><img src="@product.Images[0].Data" alt="" /></a>
+
+                    }
                     <a href="/product/@product.Id"><h5 id="price">@GetPriceText(product)</h5></a>
                 </div>
             }
