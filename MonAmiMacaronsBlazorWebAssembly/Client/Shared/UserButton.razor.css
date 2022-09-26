@@ -1,6 +1,8 @@
 ﻿
 .nav-link {
-    color: white;
+    color: #72424a;
+    font-weight: 500;
+    font-size: 1.8rem;
 }
 
 .dropdown-menu {

@@ -1,7 +1,34 @@
 ﻿@inject ICategoryService CategoryService;
 
+<section class="section-sweet">
+    <div class="container center-text">
+        <span class="subheading">Sweets</span>
+        <h2 class="heading-secondary">
+            Monami Patisserie chooses from 5,000+ recipes
+        </h2>
+    </div>
+    <div class="container grid grid--3--cols margin-botton-md">
+        @foreach (var category in CategoryService.Categories)
+        {
+            <div class="sweet">
+                <a href="product/@category.Url">
+                    <img class="sweet-img"
+                     src="/img/sweet/sweet-1.png"
+                     alt="SweetOne" />
+                </a>
+                <div class="sweet-content">
+                    <p class="sweet-title">@category.Name</p>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="container all-sweets">
+        <a href="/product" class="link"> See all Sweets &rarr;</a>
+    </div>
+</section>
+
 <!-- Languages -->
-<section class="languages">
+@*<section class="languages">
     <h2 class="md text-center my-2">
         Supported Languages
     </h2>
@@ -16,7 +43,7 @@
             </div>
         }
     </div>
-</section>
+</section>*@
 @code {
     protected override async Task OnInitializedAsync()
     {

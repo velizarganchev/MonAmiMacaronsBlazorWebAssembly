@@ -9,7 +9,65 @@
 }
 else
 {
-    <div class="cardDetails-container">
+    <section class="section-product">
+        <div class="container grid grid--2--cols">
+            <div class="gallery-product">
+                <figure class="gallery-product-fig">
+                    <img class="gallery-product-img"
+                     alt="Photo of customer Dave Bryson"
+                     src="https://www.gutekueche.ch/upload/rezept/7302/1600x1200_schoggimoeckli-guetzli.jpg" />
+                    <blockquote class="gallery-product-text">
+                        Inexpensive, healthy and great-tasting meals, without even
+                        having to order manually! It feels truly magical. Inexpensive,
+                        healthy and great-tasting meals, without even having to order
+                        manually! It feels truly magical.
+                    </blockquote>
+                    <p class="gallery-product-note">Dave Bryson</p>
+                </figure>
+            </div>
+            <div class="product">
+                <div class="product-item">
+                    <div class="product-header">
+                        <h2 class="product-title">Title</h2>
+                    </div>
+                    <ul class="product-list">
+                        <li class="product-list-item">
+                            <div class="product-price">$18.00</div>
+                        </li>
+                        <li class="product-list-item">
+                            <div class="product-variants">
+                                <label for="variants">Variants</label>
+                                <select id="variants">
+                                    <option value="ProductTypeId">Select</option>
+                                    <option value="ProductTypeId">
+                                        ProductType.Name
+                                    </option>
+                                    <option value="ProductTypeId">
+                                        ProductType.Name
+                                    </option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="product-list-item">
+                            <label for="quantity">Quantity</label>
+                            <input id="quantity"
+                               type="number"
+                               value="1"
+                               class="product-quantity"
+                               min="1" />
+                        </li>
+                    </ul>
+                    <div class="btn-container">
+                        <button class="btn btn--form" @onclick="AddToCart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    @*<div class="cardDetails-container">
         <div class="cardDetails">
             @if (!string.IsNullOrEmpty(product.ImageUrl))
             {
@@ -56,12 +114,12 @@ else
             <button class="cart-details-btn" @onclick="AddToCart">
                 <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
             </button>
-            @*
+            
         <div class="cardDetails-varian-price-btn">
 
-        </div>*@
         </div>
-    </div>
+        </div>
+    </div>*@
 }
 
 
