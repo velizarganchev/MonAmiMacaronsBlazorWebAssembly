@@ -14,15 +14,15 @@
                 <a class="main-nav-link" href="#">Gallery</a>
             </li>
             <li>
-                <a class="main-nav-link" href="#">Contact Us</a>
+                <a class="main-nav-link" href="/contact">Contact Us</a>
             </li>
-            <li>
+            @*<li>
                 <a class="main-nav-link nav-cta" href="#">Order Online</a>
-            </li>
+            </li>*@
         </ul>
     </nav>
     <div class="icons">
-        <Search/>
+        @*<Search/>*@
         <CartCounter />
         <UserButton />
     </div>
@@ -31,31 +31,6 @@
         <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
     </button>
 </header>
-
-
-@*<nav class="navbar navbar-expand-lg navbar-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="/img/heading-logo.png"/></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/product">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item dropdown">
-          <UserButton/>
-        </li>
-      </ul>
-      <CartCounter/>
-      <Search/>
-    </div>
-  </div>
-</nav>*@
 
 @code {
     protected override async Task OnInitializedAsync()

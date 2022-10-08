@@ -26,6 +26,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.CartService
             {
                 var product = await _context.Products
                     .Where(p => p.Id == cartItem.ProductId)
+                    .Include(p => p.Images)
                     .FirstOrDefaultAsync();
 
                 if (product == null)
@@ -49,6 +50,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.CartService
                     ProductId = product.Id,
                     Title = product.Title,
                     ImageUrl = product.ImageUrl,
+                    Image = product.Images.FirstOrDefault(),
                     Price = productVariant.Price,
                     ProductType = productVariant.ProductType.Name,
                     ProductTypeId = productVariant.ProductTypeId,

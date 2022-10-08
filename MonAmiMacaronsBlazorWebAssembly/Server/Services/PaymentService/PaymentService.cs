@@ -11,7 +11,8 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.PaymentService
 
         const string secret = "whsec_29a91112c2340a864b495deb773bc770a3a47f743757b84d7c705e09f084ac16";
 
-        public PaymentService(ICartService cartService,
+        public PaymentService(
+            ICartService cartService,
             IAuthService authService,
             IOrderService orderService)
         {

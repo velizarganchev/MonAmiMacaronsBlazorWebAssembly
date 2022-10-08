@@ -16,6 +16,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.OrderService
             _cartService = cartService;
             _authService = authService;
         }
+        public int Shipping { get; set; } = 15;
 
         public async Task<ServiceResponse<OrderDetailsResponse>> GetOrderDetails(int orderId)
         {

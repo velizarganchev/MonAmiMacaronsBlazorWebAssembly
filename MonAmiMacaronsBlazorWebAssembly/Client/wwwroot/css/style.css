@@ -521,11 +521,90 @@
         color: #b66a76;
     }
 
+/**************************/
+/* CART SECTION */
+/**************************/
+
+.shopping-cart {
+    padding: 3.6rem;
+    color: #72424a;
+}
+
+.product-cart {
+    grid-template-columns: 20fr 50fr 5fr 5fr 5fr 15fr;
+    margin-bottom: 3.6rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.product-image {
+    width: 100%;
+}
+
+.product-cart-title {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    margin-bottom: 2.0rem;
+}
+
+.product-description {
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+.product-quantity input {
+    width: 120%;
+    font-size: 1.8rem;
+    font-family: inherit;
+    color: inherit;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+}
+
+.remove-product {
+    font-size: 1.8rem;
+}
+
+.product-line-price {
+    font-size: 1.8rem;
+}
+
+.remove-product{
+    color: red;
+}
+.totals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 2rem;
+}
+
+.totals-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0.5rem;
+}
+
+.totals-item-label {
+    display: block;
+    color: inherit;
+    font-size: 2.0rem;
+    font-weight: 500;
+    margin-right: 8.6rem;
+}
+
+.totals-value {
+    color: inherit;
+    font-size: 2.0rem;
+    font-weight: 500;
+}
 
 /**************************/
 /* CTA SECTION */
 /**************************/
-
 .section-cta {
     padding: 9.6rem 0;
 }
@@ -559,7 +638,7 @@
 }
 
 .cta-img-box {
-    background-image: linear-gradient( to right bottom, hsla(351, 63%, 76%, 0.3), hsla(350, 64%, 71%, 0.3) ), url("/images/eating.jpg");
+    background-image: linear-gradient( to right bottom, hsla(351, 63%, 76%, 0.3), hsla(350, 64%, 71%, 0.3) ), url("/img/eating.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -579,7 +658,8 @@
     }
 
     .cta-form input,
-    .cta-form select {
+    .cta-form select,
+    .cta-form textarea {
         width: 100%;
         padding: 1.2rem;
         font-size: 1.8rem;
@@ -600,10 +680,12 @@
     box-shadow: 0 0 0 0.8rem rgba(253, 242, 233, 0.5);
 }
 
+.c-order {
+    grid-template-columns: 1fr;
+}
 /**************************/
 /* FOOTER */
 /**************************/
-
 .footer {
     padding: 12.8rem 0;
     border-top: 1px solid #eee;

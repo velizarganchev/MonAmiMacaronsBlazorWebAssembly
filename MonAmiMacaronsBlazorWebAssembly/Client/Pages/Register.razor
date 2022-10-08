@@ -1,9 +1,69 @@
 ﻿@page "/register"
+
 @inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Registration</PageTitle>
-<div class="container-register-login-form">
+
+<section class="section-cta">
+    <div class="container">
+        <div class="cta">
+            <div class="cta-text-box">
+                <h2 class="heading-secondary">Get your first meal for free!</h2>
+                <p class="cta-text">
+                    Healthy, tasty and hassle-free meals are waiting for you. Start
+                    eating well today. You can cancel or pause anytime. And the
+                    first meal is on us!
+                </p>
+                <EditForm Model="user" OnValidSubmit="HandleRegistration" class="cta-form">
+                    <DataAnnotationsValidator/>
+                    <div>
+                        <label for="email">Email address</label>
+                        <input id="email"
+                                   type="email"
+                                   placeholder="me@example.com"
+                                   aria-describedby="emailHelp"
+                                   @bind-value="user.Email"
+                                   required />
+                        <ValidationMessage For="@(() => user.Email)" class="text-danger" />
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input id="password"
+                               type="password"
+                               placeholder="password@example"
+                               aria-describedby="passwordHelpBlock"
+                               @bind-value="user.Password"
+                               required />
+                        <ValidationMessage For="@(() => user.Password)" class="text-danger" />
+                    </div>
+                    <div>
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input id="confirmPassword"
+                               type="password"
+                               placeholder="confirmPassword@example"
+                               @bind-value="user.ConfirmPassword" />
+                        <ValidationMessage For="@(() => user.ConfirmPassword)" class="text-danger" />
+                    </div>
+
+                    <button class="btn btn--form" type="submit">Login</button>
+
+                    <div class="text-danger">
+                        <span>@message</span>
+                    </div>
+
+                    <!-- <input type="checkbox" />
+                    <input type="number" /> -->
+                </EditForm>
+            </div>
+            <div class="cta-img-box"
+                 role="img"
+                 aria-label="Women enjoing food"></div>
+        </div>
+    </div>
+</section>
+
+@*<div class="container-register-login-form">
     <h3>Register</h3>
 
     <EditForm Model="user" OnValidSubmit="HandleRegistration">
@@ -21,7 +81,7 @@
       </div>
       <div class="mb-3">
         <label for="confirmPassword" class="form-label">Confirm Password</label>
-        <InputText type="password" class="form-control" id="confirmPassword"  @bind-Value="user.ConfirmPassword"/>
+        <InputText type="password" class="form-control" id="confirmPassword" @bind-Value="user.ConfirmPassword"/>
         <ValidationMessage For="@(() => user.ConfirmPassword)" class="text-danger"/>
       </div>
       <button type="submit" class="btn">Register</button>
@@ -29,7 +89,7 @@
           <span>@message</span>
       </div>
     </EditForm>
-</div>
+</div>*@
 
 @code {
     private UserRegister user = new UserRegister();

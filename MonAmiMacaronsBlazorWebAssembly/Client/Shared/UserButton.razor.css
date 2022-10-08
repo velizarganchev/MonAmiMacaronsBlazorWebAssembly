@@ -1,4 +1,13 @@
-﻿
+﻿.logout-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #72424a;
+    font-weight: 500;
+    font-size: 1.8rem;
+    transition: all 0.3s;
+}
+
+/*
 .nav-link {
     color: #72424a;
     font-weight: 500;
@@ -10,7 +19,9 @@
 }
 
 .dropdown-item {
-    color: white;
+    color: #72424a;
+    font-weight: 500;
+    font-size: 1.8rem;
 }
 
     .dropdown-item:hover {
@@ -28,3 +39,4 @@
 .navbar-nav {
     width: 100px;
 }
+*/

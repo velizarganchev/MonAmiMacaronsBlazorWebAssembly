@@ -13,49 +13,55 @@ else
         <div class="container grid grid--2--cols">
             <div class="gallery-product">
                 <figure class="gallery-product-fig">
-                    <img class="gallery-product-img"
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img class="gallery-product-img"
                      alt="Photo of customer Dave Bryson"
-                     src="https://www.gutekueche.ch/upload/rezept/7302/1600x1200_schoggimoeckli-guetzli.jpg" />
+                     src="@product.ImageUrl" />
+                    }
+                    else
+                    {
+                        <img class="gallery-product-img"
+                     alt="Photo of customer Dave Bryson"
+                     src="@product.Images[0]" />
+                    }
                     <blockquote class="gallery-product-text">
-                        Inexpensive, healthy and great-tasting meals, without even
-                        having to order manually! It feels truly magical. Inexpensive,
-                        healthy and great-tasting meals, without even having to order
-                        manually! It feels truly magical.
+                        @product.Description
                     </blockquote>
-                    <p class="gallery-product-note">Dave Bryson</p>
+                    <p class="gallery-product-note">@product.Title</p>
                 </figure>
             </div>
             <div class="product">
                 <div class="product-item">
                     <div class="product-header">
-                        <h2 class="product-title">Title</h2>
+                        <h2 class="product-title">@product.Title</h2>
                     </div>
                     <ul class="product-list">
-                        <li class="product-list-item">
-                            <div class="product-price">$18.00</div>
-                        </li>
-                        <li class="product-list-item">
-                            <div class="product-variants">
-                                <label for="variants">Variants</label>
-                                <select id="variants">
-                                    <option value="ProductTypeId">Select</option>
-                                    <option value="ProductTypeId">
-                                        ProductType.Name
-                                    </option>
-                                    <option value="ProductTypeId">
-                                        ProductType.Name
-                                    </option>
-                                </select>
-                            </div>
-                        </li>
-                        <li class="product-list-item">
-                            <label for="quantity">Quantity</label>
-                            <input id="quantity"
-                               type="number"
-                               value="1"
-                               class="product-quantity"
-                               min="1" />
-                        </li>
+                        @if (product.Variants != null && product.Variants.Count > 1)
+                        {
+                            <li class="product-list-item">
+                                @if (GetSelectedVariant != null)
+                                {
+                                    <div class="product-price">$@GetSelectedVariant().Price</div>
+                                }                                
+                            </li>
+                            <li class="product-list-item">
+                                <div class="product-variants">
+                                    <label for="variants">Variants</label>
+                                    <select id="variants" @bind="currentTypeId">
+                                        @foreach (var variant in product.Variants)
+                                        {
+                                            <option value="@variant.ProductTypeId">@variant.ProductType.Name</option>
+                                        }              
+                                    </select>
+                                </div>
+                            </li>
+                        }
+                        else{
+                            <li>
+                                <div class="product-price">$@GetSelectedVariant().Price</div>
+                            </li>
+                        }
                     </ul>
                     <div class="btn-container">
                         <button class="btn btn--form" @onclick="AddToCart">Add to Cart</button>
@@ -64,8 +70,6 @@ else
             </div>
         </div>
     </section>
-
-
 
     @*<div class="cardDetails-container">
         <div class="cardDetails">
@@ -114,7 +118,7 @@ else
             <button class="cart-details-btn" @onclick="AddToCart">
                 <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
             </button>
-            
+
         <div class="cardDetails-varian-price-btn">
 
         </div>
@@ -172,14 +176,5 @@ else
             };
 
         await CartService.AddToCart(cartItem);
-    }
-    private async Task EditProduct()
-    {
-        
-    }
-
-    private async Task DeleteProduct()
-    {
-
     }
 }
