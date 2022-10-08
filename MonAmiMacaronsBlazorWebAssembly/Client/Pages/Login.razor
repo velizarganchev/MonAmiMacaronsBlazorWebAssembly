@@ -8,7 +8,60 @@
 
 
 <PageTitle>Login</PageTitle>
-<div class="container-register-login-form">
+
+<section class="section-cta">
+    <div class="container">
+        <div class="cta">
+            <div class="cta-text-box">
+                <h2 class="heading-secondary">Login</h2>
+                <p class="cta-text">
+                    Healthy, tasty and hassle-free meals are waiting for you. Start
+                    eating well today. You can cancel or pause anytime. And the
+                    first meal is on us!
+                </p>
+                <EditForm Model="user" OnValidSubmit="HandleLogin" class="cta-form">
+                    <DataAnnotationsValidator />
+                    <div>
+                        <label for="email">Email address</label>
+                        <InputText 
+                            id="email"
+                            type="email"
+                            placeholder="me@example.com"
+                            aria-describedby="emailHelp"
+                            @bind-Value="user.Email"
+                            required />
+                        <ValidationMessage For="@(() => user.Email)" class="text-danger" />
+                    </div>
+                    <div>
+                        <label for="password">Password</label>
+                        <input id="password"
+                               type="password"
+                               placeholder="password@example"
+                               aria-describedby="passwordHelpBlock" 
+                               @bind-value="user.Password"
+                               required />
+                        <ValidationMessage For="@(() => user.Password)" class="text-danger" />
+                    </div>
+
+                    <button class="btn btn--form" type="submit">Login</button>
+
+                    <div class="text-danger">
+                        <span>@errorMessage</span>
+                    </div>
+
+                    <!-- <input type="checkbox" />
+                    <input type="number" /> -->
+                </EditForm>
+            </div>
+            <div class="cta-img-box"
+                 role="img"
+                 aria-label="Women enjoing food"></div>
+        </div>
+    </div>
+</section>
+
+
+@*<div class="container-register-login-form">
     <h3>Login</h3>
 
     <EditForm Model="user" OnValidSubmit="HandleLogin">
@@ -24,13 +77,13 @@
         <InputText type="password" class="form-control" id="password" aria-describedby="passwordHelpBlock" @bind-Value="user.Password"/>
         <ValidationMessage For="@(() => user.Password)" class="text-danger"/>
       </div>
-      <button type="submit" class="btn">Login</button>     
+      <button type="submit" class="btn">Login</button>
     </EditForm>
 
     <div class="text-danger">
           <span>@errorMessage</span>
       </div>
-</div>
+</div>*@
 
 @code {
     private UserLogin user = new UserLogin();

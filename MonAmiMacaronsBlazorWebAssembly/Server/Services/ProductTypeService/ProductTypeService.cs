@@ -20,7 +20,7 @@
 
         public async Task<ServiceResponse<List<ProductType>>> GetProductTypes()
         {
-            var productTypes = await _context.ProductTypes.ToListAsync();
+            var productTypes = await _context.ProductTypes.ToListAsync(); 
             return new ServiceResponse<List<ProductType>> { Data = productTypes };
         }
 

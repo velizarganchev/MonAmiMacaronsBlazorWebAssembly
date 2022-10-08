@@ -1,4 +1,8 @@
-﻿.search {
+﻿.d-flex {
+    align-items: center;
+}
+
+.search {
     position: relative;
     height: 30px;
 }
@@ -14,14 +18,14 @@
     }
 
 .btn-search:focus,
-    .search-input:focus {
-        outline: none;
-    }
+.search-input:focus {
+    outline: none;
+}
 
 
-    .search-btn i {
-        color: var(--primary-color);
-    }
+.search-btn i {
+    color: var(--primary-color);
+}
 
 .search.active .search-input {
     width: 200px;
@@ -29,5 +33,5 @@
 }
 
 .btn-search i {
-    color: white;
+    color: #72424a;
 }

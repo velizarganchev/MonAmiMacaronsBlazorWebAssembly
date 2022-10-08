@@ -1,14 +1,16 @@
 ﻿@inherits LayoutComponentBase
 
-<div id="content-wrap">
-        <NavMenu />
+<div>
+    <NavMenu />
     <main>
-        <article class="content">
+        <article>
             @Body
         </article>
     </main>
-    <div><Footer /></div>
+    <div>
+        <Footer />
+    </div>
 </div>
-<MudThemeProvider/>
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />

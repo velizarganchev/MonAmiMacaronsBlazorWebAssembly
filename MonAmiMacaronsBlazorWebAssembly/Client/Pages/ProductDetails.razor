@@ -9,7 +9,69 @@
 }
 else
 {
-    <div class="cardDetails-container">
+    <section class="section-product">
+        <div class="container grid grid--2--cols">
+            <div class="gallery-product">
+                <figure class="gallery-product-fig">
+                    @if (!string.IsNullOrEmpty(product.ImageUrl))
+                    {
+                        <img class="gallery-product-img"
+                     alt="Photo of customer Dave Bryson"
+                     src="@product.ImageUrl" />
+                    }
+                    else
+                    {
+                        <img class="gallery-product-img"
+                     alt="Photo of customer Dave Bryson"
+                     src="@product.Images[0]" />
+                    }
+                    <blockquote class="gallery-product-text">
+                        @product.Description
+                    </blockquote>
+                    <p class="gallery-product-note">@product.Title</p>
+                </figure>
+            </div>
+            <div class="product">
+                <div class="product-item">
+                    <div class="product-header">
+                        <h2 class="product-title">@product.Title</h2>
+                    </div>
+                    <ul class="product-list">
+                        @if (product.Variants != null && product.Variants.Count > 1)
+                        {
+                            <li class="product-list-item">
+                                @if (GetSelectedVariant != null)
+                                {
+                                    <div class="product-price">$@GetSelectedVariant().Price</div>
+                                }                                
+                            </li>
+                            <li class="product-list-item">
+                                <div class="product-variants">
+                                    <label for="variants">Variants</label>
+                                    <select id="variants" @bind="currentTypeId">
+                                        @foreach (var variant in product.Variants)
+                                        {
+                                            <option value="@variant.ProductTypeId">@variant.ProductType.Name</option>
+                                        }              
+                                    </select>
+                                </div>
+                            </li>
+                        }
+                        else{
+                            <li>
+                                <div class="product-price">$@GetSelectedVariant().Price</div>
+                            </li>
+                        }
+                    </ul>
+                    <div class="btn-container">
+                        <button class="btn btn--form" @onclick="AddToCart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @*<div class="cardDetails-container">
         <div class="cardDetails">
             @if (!string.IsNullOrEmpty(product.ImageUrl))
             {
@@ -56,12 +118,12 @@ else
             <button class="cart-details-btn" @onclick="AddToCart">
                 <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
             </button>
-            @*
+
         <div class="cardDetails-varian-price-btn">
 
-        </div>*@
         </div>
-    </div>
+        </div>
+    </div>*@
 }
 
 
@@ -114,14 +176,5 @@ else
             };
 
         await CartService.AddToCart(cartItem);
-    }
-    private async Task EditProduct()
-    {
-        
-    }
-
-    private async Task DeleteProduct()
-    {
-
     }
 }
