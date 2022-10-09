@@ -1,4 +1,8 @@
-﻿.logout-btn {
+﻿.navbar-light .navbar-nav .nav-link {
+    color: #72424a;
+}
+
+.logout-btn {
     display: inline-block;
     text-decoration: none;
     color: #72424a;

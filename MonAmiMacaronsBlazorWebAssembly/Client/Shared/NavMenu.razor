@@ -1,6 +1,33 @@
 ﻿@inject ICategoryService CategoryService
 
-<header class="header">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img class="logo" alt="MonAmi Logo" src="/img/logo-MP.png" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto font-size-lg">
+            <li class="nav-item">
+                <a class="nav-link active main-nav-link" aria-current="page" href="/product">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link main-nav-link" href="#">Gallery</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link main-nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item dropdown" data-bs-auto-close="outside">
+                <UserButton />
+            </li>
+        </ul>
+        <CartCounter/>
+    </div>
+</nav>
+
+
+
+
+@*<header class="header">
     <a href="#"><img class="logo" alt="MonAmi Logo" src="/img/logo-MP.png" /></a>
     <nav class="main-nav">
         <ul class="main-nav-list">
@@ -16,13 +43,13 @@
             <li>
                 <a class="main-nav-link" href="/contact">Contact Us</a>
             </li>
-            @*<li>
+            <li>
                 <a class="main-nav-link nav-cta" href="#">Order Online</a>
-            </li>*@
+            </li>
         </ul>
     </nav>
     <div class="icons">
-        @*<Search/>*@
+        <Search/>
         <CartCounter />
         <UserButton />
     </div>
@@ -30,7 +57,7 @@
         <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
         <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
     </button>
-</header>
+</header>*@
 
 @code {
     protected override async Task OnInitializedAsync()

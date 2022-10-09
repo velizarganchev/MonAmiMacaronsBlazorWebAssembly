@@ -1,0 +1,27 @@
+﻿.navbar {
+    color: #72424a;
+    background-color: #fcf3f4;
+    padding: 0 1.4rem 0 1.4rem;
+}
+
+.navbar-toggler {
+    font-size: 2.0rem;
+}
+
+.navbar-light .navbar-brand {
+    color: #72424a;
+    font-size: 1.8rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #72424a;
+}
+
+.dropdown-item {
+    color: #72424a;
+}
+
+.navbar-light .navbar-toggler {
+    color: #72424a;
+    border-color: #72424a;
+}
