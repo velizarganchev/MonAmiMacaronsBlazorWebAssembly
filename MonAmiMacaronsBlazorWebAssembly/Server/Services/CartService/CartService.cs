@@ -50,7 +50,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.CartService
                     ProductId = product.Id,
                     Title = product.Title,
                     ImageUrl = product.ImageUrl,
-                    Image = product.Images.FirstOrDefault(),
+                    Images = product.Images,
                     Price = productVariant.Price,
                     ProductType = productVariant.ProductType.Name,
                     ProductTypeId = productVariant.ProductTypeId,
