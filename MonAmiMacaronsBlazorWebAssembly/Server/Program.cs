@@ -9,6 +9,7 @@ global using MonAmiMacaronsBlazorWebAssembly.Server.Services.OrderService;
 global using MonAmiMacaronsBlazorWebAssembly.Server.Services.PaymentService;
 global using MonAmiMacaronsBlazorWebAssembly.Server.Services.AddressService;
 global using MonAmiMacaronsBlazorWebAssembly.Server.Services.ProductTypeService;
+global using MonAmiMacaronsBlazorWebAssembly.Server.Services.EmailService;
 
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -37,6 +38,7 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IAddressService, AddressService>();
 builder.Services.AddScoped<IProductTypeService, ProductTypeService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

@@ -142,7 +142,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.AuthService
 
             await _context.SaveChangesAsync();
 
-            return new ServiceResponse<bool> { Data = true, Message = "Password has been changed." };
+            return new ServiceResponse<bool> { Data = true, Message = "Password has been changed." }; 
         }
         public async Task<User> GetUserByEmail(string email)
         {

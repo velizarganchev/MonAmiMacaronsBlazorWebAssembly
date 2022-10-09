@@ -7,26 +7,27 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto font-size-lg">
-            <li class="nav-item">
+            <li class="nav-item w-25 p-3">
                 <a class="nav-link active main-nav-link" aria-current="page" href="/product">Products</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item w-25 p-3">
                 <a class="nav-link main-nav-link" href="#">Gallery</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link main-nav-link" href="#">About Us</a>
+            <li class="nav-item w-25 p-3">
+                <a class="nav-link main-nav-link" href="#">About</a>
             </li>
-            <li class="nav-item dropdown" data-bs-auto-close="outside">
+            <li class="nav-item w-25 p-3">
+                <a class="nav-link main-nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item dropdown w-25 p-3" data-bs-auto-close="outside">
                 <UserButton />
             </li>
+            <li class="nav-item w-50 p-3">
+                <CartCounter/>
+            </li>
         </ul>
-        <CartCounter/>
     </div>
 </nav>
-
-
-
-
 @*<header class="header">
     <a href="#"><img class="logo" alt="MonAmi Logo" src="/img/logo-MP.png" /></a>
     <nav class="main-nav">

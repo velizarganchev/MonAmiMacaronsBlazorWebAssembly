@@ -81,9 +81,7 @@ body {
     /* Only works if there is nothing absolutely positioned in relation to body */
     overflow-x: hidden;
 }
-#app{
-    font-size: 1.8rem;
-}
+
 /**************************/
 /* GENRAL REUSABLE COMPONENTS */
 /**************************/

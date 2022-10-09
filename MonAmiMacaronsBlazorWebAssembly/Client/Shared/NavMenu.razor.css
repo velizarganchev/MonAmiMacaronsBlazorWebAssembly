@@ -1,9 +1,8 @@
 ﻿.navbar {
     color: #72424a;
     background-color: #fcf3f4;
-    padding: 0 1.4rem 0 1.4rem;
+    padding: 0 4.2rem;
 }
-
 .navbar-toggler {
     font-size: 2.0rem;
 }
@@ -12,6 +11,10 @@
     color: #72424a;
     font-size: 1.8rem;
 }
+
+/*#navbarNavDropdown > ul > li {
+    padding-right: 1.2rem;
+}*/
 
 .navbar-light .navbar-nav .nav-link {
     color: #72424a;
@@ -24,4 +27,10 @@
 .navbar-light .navbar-toggler {
     color: #72424a;
     border-color: #72424a;
+}
+
+@media (max-width: 34em) {
+    .navbar {
+        padding: 0 1.2rem;
+    }
 }

@@ -23,7 +23,7 @@ else
                     {
                         <img class="gallery-product-img"
                      alt="Photo of customer Dave Bryson"
-                     src="@product.Images[0]" />
+                     src="@product.Images[0].Data" />
                     }
                     <blockquote class="gallery-product-text">
                         @product.Description
@@ -70,60 +70,6 @@ else
             </div>
         </div>
     </section>
-
-    @*<div class="cardDetails-container">
-        <div class="cardDetails">
-            @if (!string.IsNullOrEmpty(product.ImageUrl))
-            {
-               <MudImage Src="@product.ImageUrl" Alt="Mony the dog" Width="150" Height="350" Elevation="25" Class="rounded-lg ma-4"/>
-            }
-            else
-            {
-               <MudCarousel Class="mud-width-full" ItemsSource="@product.Images" Style="height: 300px">
-                   <ItemTemplate>
-                        <MudImage  Src="@context.Data"></MudImage>
-                   </ItemTemplate>
-               </MudCarousel>
-            }
-            <div class="cardDetails-body">
-                <h5 class="cardDetails-title">@product.Title</h5>
-                <p class="cardDetails-text">@product.Description</p>
-            </div>
-        </div>
-        <div class="cardDetails-varian-price">
-            @if (product.Variants != null && product.Variants.Count > 1)
-            {
-                <div>
-                    @if (GetSelectedVariant != null)
-                    {
-                        @if (GetSelectedVariant().OriginalPrice > GetSelectedVariant().Price)
-                        {
-                            <h6 class="originalPrice">$@GetSelectedVariant().OriginalPrice</h6>
-                        }
-                        <h5 class="cardDetails-text" id="price">$@GetSelectedVariant().Price</h5>
-                    }
-                </div>
-                <select class="cardDetails-body-variant" @bind="currentTypeId">
-                    @foreach (var variant in product.Variants)
-                    {
-                        <option value="@variant.ProductTypeId">@variant.ProductType.Name</option>
-                    }
-                </select>
-            }
-            else
-            {
-                <h5 class="cardDetails-text" id="price">$@GetSelectedVariant().Price</h5>
-            }
-
-            <button class="cart-details-btn" @onclick="AddToCart">
-                <i class="oi oi-cart"></i>&nbsp;&nbsp;&nbsp;Add to Cart
-            </button>
-
-        <div class="cardDetails-varian-price-btn">
-
-        </div>
-        </div>
-    </div>*@
 }
 
 

@@ -1,4 +1,7 @@
-﻿a {
-    margin: 10px;
-    font-size: 1.8rem;
+﻿#navbarNavDropdown > ul > li:nth-child(6) > a > i {
+    color: #72424a;
+}
+
+#navbarNavDropdown > ul > li:nth-child(6) > a > span {
+    color: #72424a;
 }
