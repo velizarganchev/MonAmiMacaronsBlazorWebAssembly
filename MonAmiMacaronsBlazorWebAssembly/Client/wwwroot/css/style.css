@@ -647,7 +647,7 @@
 
 .cta-form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     column-gap: 3.2rem;
     row-gap: 2.4rem;
 }

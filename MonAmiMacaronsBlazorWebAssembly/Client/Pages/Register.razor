@@ -58,38 +58,10 @@
             </div>
             <div class="cta-img-box"
                  role="img"
-                 aria-label="Women enjoing food"></div>
+                 aria-label="Women enjoing food"></div> 
         </div>
     </div>
 </section>
-
-@*<div class="container-register-login-form">
-    <h3>Register</h3>
-
-    <EditForm Model="user" OnValidSubmit="HandleRegistration">
-      <DataAnnotationsValidator/>
-
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <InputText type="email" class="form-control" id="email" aria-describedby="emailHelp" @bind-Value="user.Email"/>
-        <ValidationMessage For="@(() => user.Email)" class="text-danger"/>
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <InputText type="password" class="form-control" id="password" aria-describedby="passwordHelpBlock" @bind-Value="user.Password"/>
-        <ValidationMessage For="@(() => user.Password)" class="text-danger"/>
-      </div>
-      <div class="mb-3">
-        <label for="confirmPassword" class="form-label">Confirm Password</label>
-        <InputText type="password" class="form-control" id="confirmPassword" @bind-Value="user.ConfirmPassword"/>
-        <ValidationMessage For="@(() => user.ConfirmPassword)" class="text-danger"/>
-      </div>
-      <button type="submit" class="btn">Register</button>
-      <div class="@messageCssClass">
-          <span>@message</span>
-      </div>
-    </EditForm>
-</div>*@
 
 @code {
     private UserRegister user = new UserRegister();

@@ -60,31 +60,6 @@
     </div>
 </section>
 
-
-@*<div class="container-register-login-form">
-    <h3>Login</h3>
-
-    <EditForm Model="user" OnValidSubmit="HandleLogin">
-      <DataAnnotationsValidator/>
-
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <InputText type="email" class="form-control" id="email" aria-describedby="emailHelp" @bind-Value="user.Email"/>
-        <ValidationMessage For="@(() => user.Email)" class="text-danger"/>
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <InputText type="password" class="form-control" id="password" aria-describedby="passwordHelpBlock" @bind-Value="user.Password"/>
-        <ValidationMessage For="@(() => user.Password)" class="text-danger"/>
-      </div>
-      <button type="submit" class="btn">Login</button>
-    </EditForm>
-
-    <div class="text-danger">
-          <span>@errorMessage</span>
-      </div>
-</div>*@
-
 @code {
     private UserLogin user = new UserLogin();
 

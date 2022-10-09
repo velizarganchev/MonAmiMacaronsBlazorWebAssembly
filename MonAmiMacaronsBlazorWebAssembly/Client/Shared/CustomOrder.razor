@@ -1,52 +1,76 @@
-﻿<section class="section-cta">
-    <div class="container">
-        <div class="cta">
-            <div class="cta-text-box">
-                <h2 class="heading-secondary">Custom Order</h2>
-                <p class="cta-text">
-                    Be the first to receive updates on exclusive events,
-                    secret menus, special offers/discounts, loyalty rewards & more!
-                </p>
-                <form class="cta-form c-order" action="#">
-                    <div>
-                        <label for="full-name">Full Name</label>
-                        <input id="full-name"
+﻿@inject IEmailService EmailService
+@inject NavigationManager NavigationManager
+
+@if (string.IsNullOrEmpty(message))
+{
+    <section class="section-cta">
+        <div class="container">
+            <div class="cta">
+                <div class="cta-text-box">
+                    <h2 class="heading-secondary">Custom Order</h2>
+                    <p class="cta-text">
+                        Be the first to receive updates on exclusive events,
+                        secret menus, special offers/discounts, loyalty rewards & more!
+                    </p>
+                    <EditForm class="cta-form c-order" Model="email" OnValidSubmit="SendEmail">
+                        <DataAnnotationsValidator/>
+                        <div>
+                            <label for="full-name">Full Name</label>
+                            <input id="full-name"
                                type="text"
                                placeholder="John Smith"
+                               @bind-value="email.Subject"
                                required />
-                    </div>
-                    <div>
-                        <label for="email">Email address</label>
-                        <input id="email"
+                            <ValidationMessage For="@(() => email.Subject)" class="text-danger"/>
+                        </div>
+                        <div>
+                            <label for="email">Email address</label>
+                            <input id="email"
                                type="email"
                                placeholder="me@example.com"
+                               @bind-value="email.From"
                                required />
-                    </div>
-                    <div>
-                        <label for="phone">Phone number</label>
-                        <input id="phone"
-                               type="text"
+                            <ValidationMessage For="@(() => email.From)" class="text-danger"/>
+                        </div>
+                        <div>
+                            <label for="phone">Phone number</label>
+                            <input id="phone"
+                               type="tel"
                                placeholder="+49 323 1232 2333"
+                               @bind-value="email.PhoneNumber"
                                required />
-                    </div>
-                    <div>
-                        <label for="contact-text-area">Where did you hear from us?</label>
-                        <textarea id="contact-text-area" placeholder="text..." />
-                    </div>
+                            <ValidationMessage For="@(() => email.PhoneNumber)" class="text-danger"/>
+                        </div>
+                        <div>
+                            <label for="contact-text-area">Where did you hear from us?</label>
+                            <textarea @bind="email.Body" id="contact-text-area" placeholder="text..." required/>
+                            <ValidationMessage For="@(() => email.Body)" class="text-danger"/>
+                        </div>
+                        <button class="btn btn--form" type="submit">Contact Me</button>
 
-                    <button class="btn btn--form">Contact Me</button>
-
-                    <!-- <input type="checkbox" />
-                    <input type="number" /> -->
-                </form>
-            </div>
-            <div class="cta-img-box"
+                        <!-- <input type="checkbox" />
+                        <input type="number" /> -->
+                    </EditForm>
+                </div>
+                <div class="cta-img-box"
                  role="img"
-                 aria-label="Women enjoing food"></div>
+                 aria-label="Women enjoing food">
+                 </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+else{
+    <ThankYou Message="@message"/>
+}
 
 @code {
+    private Email email = new Email();
+    private string message = string.Empty;
 
+    async Task SendEmail()
+    {
+        var result = await EmailService.SendEmail(email);
+        message = result.Message;
+    }
 }
