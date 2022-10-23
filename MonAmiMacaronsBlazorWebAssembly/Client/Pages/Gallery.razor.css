@@ -1,0 +1,11 @@
+﻿.section-galery {
+    background-color: #fcf3f4;
+    padding: 9.6rem 0;
+}
+
+.gallery-page {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 1.6rem;
+}
