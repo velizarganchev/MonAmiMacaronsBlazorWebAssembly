@@ -1,6 +1,5 @@
-﻿﻿.container {
-    display: flex;
-    padding: 6px;
+﻿.section-orders {
+    padding: 9.6rem 0;
 }
 
 .image-wrapper {
@@ -22,4 +21,12 @@
 .product-price {
     font-weight: 600;
     text-align: right;
+}
+
+.order-price {
+    font-size: 2.4rem;
+}
+
+.link {
+    font-size: 1.2rem;
 }

@@ -225,6 +225,19 @@ body {
         color: #894f59;
     }
 
+.btn--profile {
+    background-color: #b66a76;
+    color: #fff;
+    align-self: end;
+    padding: 0rem 4.2rem;
+}
+
+    .btn--profile:hover {
+        background-color: #fff;
+        color: #894f59;
+        box-shadow: inset 0 0 0 3px #b66a76;
+    }
+
 .btn--checkout {
     background-color: #1a8d1a;
     color: #fff;

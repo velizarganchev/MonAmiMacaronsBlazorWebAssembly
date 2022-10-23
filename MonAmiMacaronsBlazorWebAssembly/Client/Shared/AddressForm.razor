@@ -4,7 +4,7 @@
 {
         <span>
             You haven't specified a delivery address, yet.
-            <button class="btn" @onclick="InitAddress">Add an address?</button>
+            <button class="btn btn--profile" @onclick="InitAddress">Add an address?</button>
         </span>
 }
 else if (!editAddress)
@@ -15,7 +15,7 @@ else if (!editAddress)
                 <span>@address.City, @address.Zip, @address.State</span><br />
             <span>@address.Country</span><br />
         </p>
-        <button class="btn btn-primary" @onclick="EditAddress">Edit</button>
+        <button class="btn btn--profile" @onclick="EditAddress">Edit</button>
 }
 else
 {

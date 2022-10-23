@@ -1,6 +1,12 @@
-﻿.container {
-    display: flex;
-    padding: 6px;
+﻿.section-order-details {
+    background-color: #fcf3f4;
+    padding: 9.6rem 0;
+}
+
+.heading-orders-details {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: 3.2rem;
 }
 
 .image-wrapper {
@@ -19,7 +25,19 @@
     padding: 6px;
 }
 
+.order-details-span {
+    font-size: 1.8rem;
+}
+
 .product-price {
     font-weight: 600;
+    text-align: right;
+    font-size: 2.4rem;
+}
+
+.order-total-price {
+    margin: 1.4rem;
+    padding: 1rem;
+    font-size: 3.2rem;
     text-align: right;
 }

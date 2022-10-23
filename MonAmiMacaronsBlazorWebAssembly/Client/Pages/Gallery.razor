@@ -3,58 +3,18 @@
     <div class="container center-text">
         <h1 class="heading-primary">Gallery</h1>
     </div>
-    <div class="gallery-page">
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-1.png"
+    <div class="gallery-page grid grid--4--cols">
+        @for (int i = 1; i <= 40; i++)
+        {
+            var picture = i.ToString() + ".png";
+            <figure class="gallery-item">
+                                <img src="/img/MonAmiFotosGallery/@picture"
                  alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-2.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-3.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-4.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-5.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-6.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-7.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-8.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-9.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-10.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-11.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
-        <figure class="gallery-item">
-            <img src="/img/gallery/gallery-12.png"
-                 alt="Photo of beautifully arranged foot" />
-        </figure>
+            </figure>
+        }       
     </div>
 </section>
-
+<CustomOrder/>
 
 @code {
 

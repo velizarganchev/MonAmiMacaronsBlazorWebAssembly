@@ -3,31 +3,33 @@
 
 @if (order == null)
 {
-        <span>Loading order...</span>
+        <span class="subheading">Loading order...</span>
 }
 else
 {
-        <h3>Order from @order.OrderDate</h3>
+    <section class="section-order-details">
+        <h3 class="heading-orders-details">Order from @order.OrderDate</h3>
 
         <div>
         @foreach (var product in order.Products)
         {
-                    <div class="container">
-                        <div class="image-wrapper">
-                            <img src="@product.ImageUrl" class="image" />
-                        </div>
-                        <div class="name">
-                            <h5><a href="/product/@product.ProductId">@product.Title</a></h5>
-                            <span>@product.ProductType</span><br />
-                            <span>Quantity: @product.Quantity</span>
-                        </div>
-                        <div class="product-price">$@product.TotalPrice</div>
-                    </div>
+            <div class="container grid grid--3--cols">
+                <div class="image-wrapper">
+                    <img src="@product.ImageUrl" class="image" />
+                </div>
+                <div class="name">
+                    <h5 class="heading-tertiary">@product.Title</h5>
+                    <span class="order-details-span">@product.ProductType</span><br />
+                    <span class="order-details-span">Quantity: @product.Quantity</span>
+                </div>
+                <div class="product-price">$@product.TotalPrice</div>
+            </div>
         }
-            <div class="product-price">
+                <div class="order-total-price">
                 Total: $@order.TotalPrice
             </div>
         </div>
+    </section>
 }
 
 @code {
