@@ -93,7 +93,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.OrderService
         public async Task<ServiceResponse<bool>> PlaceOrder(int userId)
         {
             var products = (await _cartService.GetDbCartProducts(userId)).Data;
-            decimal totalPrice = 0;
+            decimal totalPrice = 14;
             products.ForEach(product => totalPrice += product.Price * product.Quantity);
 
             var orderItems = new List<OrderItem>();

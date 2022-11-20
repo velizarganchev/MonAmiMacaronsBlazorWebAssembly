@@ -7,10 +7,9 @@
         <div class="container">
             <div class="cta">
                 <div class="cta-text-box">
-                    <h2 class="heading-secondary">Custom Order</h2>
+                    <h2 class="heading-secondary">@Title</h2>
                     <p class="cta-text">
-                        Be the first to receive updates on exclusive events,
-                        secret menus, special offers/discounts, loyalty rewards & more!
+                        @SecondTitle
                     </p>
                     <EditForm class="cta-form c-order" Model="email" OnValidSubmit="SendEmail">
                         <DataAnnotationsValidator/>
@@ -46,7 +45,7 @@
                             <textarea @bind="email.Body" id="contact-text-area" placeholder="text..." required/>
                             <ValidationMessage For="@(() => email.Body)" class="text-danger"/>
                         </div>
-                        <button class="btn btn--form" type="submit">Contact Me</button>
+                        <button class="btn btn--form" type="submit">@TextButton</button>
 
                         <!-- <input type="checkbox" />
                         <input type="number" /> -->
@@ -65,6 +64,13 @@ else{
 }
 
 @code {
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+    [Parameter]
+    public string SecondTitle { get; set; } = string.Empty;
+    [Parameter]
+    public string TextButton { get; set; } = string.Empty;
+
     private Email email = new Email();
     private string message = string.Empty;
 

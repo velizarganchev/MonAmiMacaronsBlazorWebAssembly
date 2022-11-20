@@ -16,7 +16,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.PaymentService
             IAuthService authService,
             IOrderService orderService)
         {
-            StripeConfiguration.ApiKey = "sk_test_51LgpaKFsSZ1KzpIkrK7xFO0LtqsLQgS7fAzKsLKZk2ZtkTiP3D2lOKrkxerhSG5rk7UcXODHoix3BsG6jCbitDsq00PqeAOfUO";
+            StripeConfiguration.ApiKey = "pk_test_51M328uDkdYh9MQGsm2fFRkTpYw2q1xIq9We3NJztDqpxTP2gJvICT0uIDjJCven6LlFjTTmvu0zAV4ZA5xPhT4Iz00MWW7Z6Xw";
 
             _cartService = cartService;
             _authService = authService;

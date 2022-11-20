@@ -1,15 +1,15 @@
 ﻿@page "/orders"
 @inject IOrderService OrderService
 <section class="section-orders">
-    <h3 class="heading-tertiary">Orders</h3>
+    <h3 class="heading-secondary">Orders</h3>
     
     @if (orders == null)
     {
-                    <span class="subheading">Loading your orders...</span>
+        <span class="heading-tertiary">Loading your orders...</span>
     }
     else if (orders.Count <= 0)
     {
-               <span class="heading-secondary">You have no orders, yet.</span>
+        <span class="heading-tertiary">You have no orders, yet.</span>
     }
     else
     {

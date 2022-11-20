@@ -19,7 +19,7 @@ namespace MonAmiMacaronsBlazorWebAssembly.Server.Services.EmailService
             email.From.Add(MailboxAddress.Parse(request.From));
             email.To.Add(MailboxAddress.Parse(_config.GetSection("Email:UserName").Value));
 
-            email.Subject = request.Subject;
+            email.Subject = $"{request.Subject} / {request.PhoneNumber}";
             email.Body = new TextPart(TextFormat.Html) { Text = request.Body };
 
             using var smtp = new SmtpClient();

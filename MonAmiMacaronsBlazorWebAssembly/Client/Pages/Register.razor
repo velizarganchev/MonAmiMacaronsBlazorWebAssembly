@@ -9,22 +9,21 @@
     <div class="container">
         <div class="cta">
             <div class="cta-text-box">
-                <h2 class="heading-secondary">Get your first meal for free!</h2>
+                <h2 class="heading-secondary">Become a VIP</h2>
                 <p class="cta-text">
-                    Healthy, tasty and hassle-free meals are waiting for you. Start
-                    eating well today. You can cancel or pause anytime. And the
-                    first meal is on us!
+                    Be the first to receive updates on exclusive events,
+                    secret menus, special offers/discounts, loyalty rewards & more!
                 </p>
                 <EditForm Model="user" OnValidSubmit="HandleRegistration" class="cta-form">
-                    <DataAnnotationsValidator/>
+                    <DataAnnotationsValidator />
                     <div>
                         <label for="email">Email address</label>
                         <input id="email"
-                                   type="email"
-                                   placeholder="me@example.com"
-                                   aria-describedby="emailHelp"
-                                   @bind-value="user.Email"
-                                   required />
+                               type="email"
+                               placeholder="me@example.com"
+                               aria-describedby="emailHelp"
+                               @bind-value="user.Email"
+                               required />
                         <ValidationMessage For="@(() => user.Email)" class="text-danger" />
                     </div>
                     <div>
@@ -46,7 +45,7 @@
                         <ValidationMessage For="@(() => user.ConfirmPassword)" class="text-danger" />
                     </div>
 
-                    <button class="btn btn--form" type="submit">Login</button>
+                    <button class="btn btn--form" type="submit">Register</button>
 
                     <div class="text-danger">
                         <span>@message</span>
@@ -58,7 +57,7 @@
             </div>
             <div class="cta-img-box"
                  role="img"
-                 aria-label="Women enjoing food"></div> 
+                 aria-label="Women enjoing food"></div>
         </div>
     </div>
 </section>

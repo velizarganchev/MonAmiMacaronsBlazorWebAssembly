@@ -640,7 +640,7 @@
 }
 
 .cta-img-box {
-    background-image: linear-gradient( to right bottom, hsla(351, 63%, 76%, 0.3), hsla(350, 64%, 71%, 0.3) ), url("/img/eating.jpg");
+    background-image: linear-gradient( to right bottom, hsla(351, 63%, 76%, 0.3), hsla(350, 64%, 71%, 0.3) ), url("/img/torte.png");
     background-size: cover;
     background-position: center;
 }
